@@ -33,9 +33,9 @@ Total Memory: 490 MiB
 Name: remotehost
 ID: K772:A3T6:O4SY:FTSI:RSRV:IBYZ:6T32:2DP5:6WRN:BEVY:PJW2:UZBF
 WARNING: No swap limit support
-$ docker build -t cleanbits https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/Dockerfile.example
+~$ docker build -t cleanbits https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/Dockerfile.example
 ...
-$ docker images
+~$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 cleanbits           latest              16071d0d3824        22 seconds ago      188.8 MB
 ubuntu              14.04               2d24f826cb16        44 hours ago        188.3 MB
@@ -43,7 +43,7 @@ ubuntu              14.04.2             2d24f826cb16        44 hours ago        
 ubuntu              latest              2d24f826cb16        44 hours ago        188.3 MB
 ubuntu              trusty              2d24f826cb16        44 hours ago        188.3 MB
 ubuntu              trusty-20150218.1   2d24f826cb16        44 hours ago        188.3 MB
-$ docker-machine ssh remotehost 'docker images'
+~$ docker-machine ssh remotehost 'docker images'
 REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
 cleanbits           latest              16071d0d3824        About a minute ago   188.8 MB
 ubuntu              trusty              2d24f826cb16        44 hours ago         188.3 MB
@@ -51,4 +51,15 @@ ubuntu              trusty-20150218.1   2d24f826cb16        44 hours ago        
 ubuntu              14.04               2d24f826cb16        44 hours ago         188.3 MB
 ubuntu              14.04.2             2d24f826cb16        44 hours ago         188.3 MB
 ubuntu              latest              2d24f826cb16        44 hours ago         188.3 MB
+~$ docker run -u dockeru --rm -v /dev/log:/dev/log -t -i cleanbits ping www.google.com
+ping: icmp open socket: Operation not permitted
+~$ docker run --rm -v /dev/log:/dev/log --cap-drop all --cap-add net_raw -t -i cleanbits ping -c1 www.google.com
+PING www.google.com (64.233.167.104) 56(84) bytes of data.
+64 bytes from 64.233.167.104: icmp_seq=1 ttl=43 time=47.7 ms
+
+--- www.google.com ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 47.707/47.707/47.707/0.000 ms
+~$ docker run --rm -v /dev/log:/dev/log --cap-drop all -t -i cleanbits ping -c1 www.google.com
+ping: icmp open socket: Operation not permitted
 ```
