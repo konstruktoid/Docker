@@ -21,6 +21,7 @@ if ! test -x "$MACHINE";
                 wget $MACHINERELEASE
                 sudo mv docker-machine_linux-amd64 /usr/local/bin/
                 sudo chown root:root /usr/local/bin/docker-machine_linux-amd64
+				sudo chmod 0755 /usr/local/bin/docker-machine_linux-amd64
                 sudo ln -vfs /usr/local/bin/docker-machine_linux-amd64 "$MACHINE"
                 docker-machine -v
 fi
