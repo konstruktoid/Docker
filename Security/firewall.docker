@@ -25,8 +25,8 @@ $IPT -A OUTPUT -o lo -j ACCEPT
 for ip in $ADMIN;
         do
         $IPT -A INPUT -p tcp --dport 22 -s $ip -j ACCEPT
-		$IPT -A INPUT -p tcp --dport 2375 -s $ip -j ACCEPT
-		$IPT -A INPUT -p tcp --dport 2376 -s $ip -j ACCEPT
+	$IPT -A INPUT -p tcp --dport 2375 -s $ip -j ACCEPT
+	$IPT -A INPUT -p tcp --dport 2376 -s $ip -j ACCEPT
 done
 
 $IPT -A INPUT -j DROP
