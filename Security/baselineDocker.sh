@@ -54,7 +54,8 @@ for SHELL in `cat /etc/shells`; do
 done
 
 echo ":: Changing default Docker options"
-sed -i 's/^#DOCKER_OPTS="/DOCKER_OPTS="--icc=false" # /' /etc/default/docker
+sed -i 's/DOCKER_OPTS="/DOCKER_OPTS="--icc=false /' /etc/default/docker
+sed -i "s/DOCKER_OPTS='/DOCKER_OPTS='--icc=false /" /etc/default/docker
 service docker restart
 
 echo ":: Setting up NTP"
