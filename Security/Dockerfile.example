@@ -1,4 +1,3 @@
-Dockerfile.example
 FROM ubuntu:latest
 
 ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp
