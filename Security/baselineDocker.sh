@@ -3,7 +3,7 @@
 # docker run --rm -u dockeru -v /dev/log:/dev/log --cap-drop all -t -i ubuntu ping www.google.com
 
 FW_CONF="https://raw.githubusercontent.com/konstruktoid/ubuntu-conf/master/net/firewall.conf"
-FW_POLICY="https://raw.githubusercontent.com/konstruktoid/ubuntu-conf/master/net/firewall"
+FW_POLICY="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/firewall.docker"
 NTP="https://raw.githubusercontent.com/konstruktoid/ubuntu-conf/master/net/ntpconf.sh"
 ADMINIP=`grep "Accepted publickey" /var/log/auth.log | awk '{print $11}' | sort | uniq`
 
