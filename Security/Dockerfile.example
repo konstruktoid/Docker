@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp
+ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp/cleanBits.sh
 
 RUN \
         apt-get update && \
