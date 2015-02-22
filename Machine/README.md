@@ -1,4 +1,4 @@
-** Deploy and harden a Docker host on _DigitalOcean_ with _Docker Machine_ **     
+**Deploy and harden a Docker host on _DigitalOcean_ with _Docker Machine_**     
      
 Treat this as pre-alpha WIP, and read the code.    
 Before you begin you need to set your DigitalOcean access token in the script.     
