@@ -13,3 +13,42 @@ Some users are remove.
 SUID bits are removed.     
 Docker option *icc* is set to false.     
 NTP is then configured and old and unused packages are removed.
+
+**Build a image**     
+
+```
+~$ $(docker-machine env remotehost)     
+~$ docker info
+Containers: 0
+Images: 0
+Storage Driver: aufs
+ Root Dir: /var/lib/docker/aufs
+ Backing Filesystem: extfs
+ Dirs: 0
+Execution Driver: native-0.2
+Kernel Version: 3.13.0-43-generic
+Operating System: Ubuntu 14.04.2 LTS
+CPUs: 1
+Total Memory: 490 MiB
+Name: remotehost
+ID: K772:A3T6:O4SY:FTSI:RSRV:IBYZ:6T32:2DP5:6WRN:BEVY:PJW2:UZBF
+WARNING: No swap limit support
+$ docker build -t cleanbits https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/Dockerfile.example
+...
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+cleanbits           latest              16071d0d3824        22 seconds ago      188.8 MB
+ubuntu              14.04               2d24f826cb16        44 hours ago        188.3 MB
+ubuntu              14.04.2             2d24f826cb16        44 hours ago        188.3 MB
+ubuntu              latest              2d24f826cb16        44 hours ago        188.3 MB
+ubuntu              trusty              2d24f826cb16        44 hours ago        188.3 MB
+ubuntu              trusty-20150218.1   2d24f826cb16        44 hours ago        188.3 MB
+$ docker-machine ssh remotehost 'docker images'
+REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+cleanbits           latest              16071d0d3824        About a minute ago   188.8 MB
+ubuntu              trusty              2d24f826cb16        44 hours ago         188.3 MB
+ubuntu              trusty-20150218.1   2d24f826cb16        44 hours ago         188.3 MB
+ubuntu              14.04               2d24f826cb16        44 hours ago         188.3 MB
+ubuntu              14.04.2             2d24f826cb16        44 hours ago         188.3 MB
+ubuntu              latest              2d24f826cb16        44 hours ago         188.3 MB
+```
