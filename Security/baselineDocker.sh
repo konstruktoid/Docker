@@ -1,6 +1,4 @@
 #!/bin/bash
-# $(docker-machine env machine)
-# docker run --rm -u dockeru -v /dev/log:/dev/log --cap-drop all -t -i ubuntu ping www.google.com
 
 FW_CONF="https://raw.githubusercontent.com/konstruktoid/ubuntu-conf/master/net/firewall.conf"
 FW_POLICY="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/firewall.docker"
