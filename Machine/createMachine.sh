@@ -34,5 +34,5 @@ if [ -z $INPUT ];
                 exit
         else
                 docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region ams2 $@
-                docker-machine ssh $@ 'wget -O /tmp/baselineDocker.sh $HARDENING; /bin/bash /tmp/baselineDocker.sh'
+                docker-machine ssh $@ "wget -O /tmp/baselineDockerHost.sh $HARDENING; /bin/bash /tmp/baselineDockerHost.sh"
 fi
