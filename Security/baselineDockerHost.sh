@@ -9,7 +9,7 @@ echo ":: Setting up a firewall"
 curl $FW_CONF > /etc/init/firewall.conf
 curl $FW_POLICY > /etc/init.d/firewall
 update-rc.d firewall defaults 
-sed -i "s/ADMIN=.*/ADMIN="$ADMINIP"/" /etc/init.d/firewall
+sed -i "s/ADMIN=.*/ADMIN=\"$ADMINIP\"/" /etc/init.d/firewall
 chmod u+x /etc/init.d/firewall
 bash /etc/init.d/firewall
 

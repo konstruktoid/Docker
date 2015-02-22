@@ -12,7 +12,7 @@ $IP6T --flush
 
 $IPT -P INPUT DROP
 $IPT -P OUTPUT DROP
-$IPT -P FORWARD DROP
+$IPT -P FORWARD ACCEPT
 
 $IPT -I INPUT -j ACCEPT -p icmp --icmp-type echo-request
 
@@ -29,18 +29,28 @@ for ip in $ADMIN;
 	$IPT -A INPUT -p tcp --dport 2376 -s $ip -j ACCEPT
 done
 
+$IPT -A FORWARD -o docker0 -j DOCKER
+$IPT -A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+$IPT -A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+$IPT -A FORWARD -i docker0 -o docker0 -j DROP
+
 $IPT -A INPUT -j DROP
 
 # IPv6 rules
 
 $IP6T -P INPUT DROP
 $IP6T -P OUTPUT DROP
-$IP6T -P FORWARD DROP
+$IP6T -P FORWARD ACCEPT
 
 $IP6T -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 $IP6T -A OUTPUT -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
 
 $IP6T -A INPUT -i lo -j ACCEPT
 $IP6T -A OUTPUT -o lo -j ACCEPT
+
+$IPT -A FORWARD -o docker0 -j DOCKER
+$IPT -A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+$IPT -A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+$IPT -A FORWARD -i docker0 -o docker0 -j DROP
 
 $IP6T -A INPUT -j DROP
