@@ -9,7 +9,7 @@ It will then download and run https://raw.githubusercontent.com/konstruktoid/Doc
 *baselineDockerHost.sh* installs a basic firewall before it upgrades all packages installed on the host.     
 The packages *apparmor-profiles*, *haveged* and *ntp* are installed.     
 *hosts.allow* and *hosts.deny* as well as *cron* and *at* are configured.    
-The user *dockeru* is added and other users are remove.     
+Some users are remove.     
 SUID bits are removed.     
 Docker option *icc* is set to false.     
 NTP is then configured and old and unused packages are removed.

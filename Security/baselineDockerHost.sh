@@ -26,9 +26,6 @@ echo ALL: PARANOID > /etc/hosts.deny
 echo root > /etc/cron.allow
 echo root > /etc/at.allow
 
-echo ":: Adding dockeru user"
-adduser --system --no-create-home --group --disabled-password --shell /bin/false dockeru 
-
 echo ":: Removing users"
 for users in games gnats irc news uucp; 
 do 
