@@ -1,0 +1,15 @@
+Dockerfile.example
+FROM ubuntu:latest
+
+ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp
+
+RUN \
+        apt-get update && \
+        apt-get -y upgrade && \
+        apt-get -y clean && \ 
+		apt-get -y autoremove
+
+RUN \
+        /bin/bash /tmp/cleanBits.sh
+
+CMD ["bash"]
