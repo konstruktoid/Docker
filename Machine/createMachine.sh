@@ -4,6 +4,7 @@
 
 MACHINE="/usr/local/bin/docker-machine"
 MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.1.0-rc4/docker-machine_linux-amd64"
+HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDocker.sh"
 ACCESSTOKEN=""
 
 if [ -z $ACCESSTOKEN ];
@@ -33,5 +34,5 @@ if [ -z $INPUT ];
                 exit
         else
                 docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region ams2 $@
-                docker-machine ssh $@ 'source < ( https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDocker.sh )'
+                docker-machine ssh $@ 'wget -O /tmp/baselineDocker.sh $HARDENING; /bin/bash /tmp/baselineDocker.sh'
 fi
