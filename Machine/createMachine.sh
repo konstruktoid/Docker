@@ -25,5 +25,5 @@ if [ -z $INPUT ];
                 echo "Machine name required"
         else
                 docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region ams2 $@
-                docker-machine ssh $@
+                docker-machine ssh $@ 'source < ( https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDocker.sh )'
 fi
