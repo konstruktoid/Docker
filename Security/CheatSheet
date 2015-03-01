@@ -1,0 +1,41 @@
+Dockerfile example:
+FROM ubuntu:latest
+
+ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp/cleanBits.sh
+
+RUN \
+        apt-get update && \
+        apt-get -y upgrade && \
+        apt-get -y clean && \ 
+		apt-get -y autoremove
+
+RUN \
+		adduser --system --no-create-home --group --disabled-password --shell /bin/false dockeru
+        /bin/bash /tmp/cleanBits.sh
+
+CMD ["bash"]
+
+Docker run options:
+Time:
+-v /etc/localtime:/etc/localtime:ro
+
+Log:
+-v /dev/log:/dev/log
+
+Capabilities:
+~$ docker run --rm --name name -t image
+~$ docker exec `docker ps -q` ps a | awk '{print $1}' | grep -v PID
+~$ docker exec `docker ps -q` cat /proc/1/status | grep CapEff | awk '{print $NF}'
+~$ docker exec `docker ps -q` capsh --decode=00000020a80425fb | sed -e 's/.*=//' -e 's/cap_/--cap-add /g' -e 's/,/ /g'
+~$ curl https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/capability.h | grep " CAP_" | awk '{print $2, $3}'
+
+~$ export CAP="--cap-drop all --cap-add dac_override --cap-add fowner --cap-add fsetid --cap-add kill --cap-add setpcap --cap-add net_bind_service --cap-add net_raw --cap-add audit_write --cap-add setfcap"
+~$ docker run --rm -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name $@ -t <IMAGE>
+~$ docker run --rm -u dockeru -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name $@ -t <IMAGE>
+
+Docker daemon options:
+--icc=false
+
+Docker daemon host:
+Lock it down with a firewall, remove SUID/GUID, password policies, stricter SSH configuration, ...
+http://konstruktoid.net/2014/07/07/ubuntu_config-sh-stricter-settings-for-your-ubuntu-server/
