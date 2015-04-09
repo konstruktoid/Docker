@@ -1,3 +1,5 @@
+*Automated build available at https://registry.hub.docker.com/u/konstruktoid/cleanbits/ *     
+     
 *Build the _cleanbits_ container*    
 ~$ docker build -t cleanbits -f Dockerfile.example .    
      
