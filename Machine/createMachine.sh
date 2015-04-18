@@ -3,7 +3,7 @@
 # https://www.digitalocean.com/
 
 MACHINE="/usr/local/bin/docker-machine"
-MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.1.0-rc5/docker-machine_linux-amd64"
+MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.2.0/docker-machine_linux-amd64"
 HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDockerHost.sh"
 ACCESSTOKEN=""
 
