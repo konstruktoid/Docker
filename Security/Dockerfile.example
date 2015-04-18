@@ -12,4 +12,5 @@ RUN \
 	adduser --system --no-create-home --group --disabled-password --shell /bin/false dockeru && \
 	/bin/bash /tmp/cleanBits.sh
 
-CMD ["bash"]
+ENTRYPOINT ["/bin/bash"]
+CMD []
