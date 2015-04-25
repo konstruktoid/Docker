@@ -2,7 +2,7 @@
      
 Treat this as pre-alpha WIP, and read the code.    
 Before you begin you need to set your DigitalOcean access token in the script.     
-createMachine.sh will download https://github.com/docker/machine/releases/download/v0.1.0-rc4/docker-machine_linux-amd64 and move it to /usr/local/bin/docker-machine unless already available.     
+createMachine.sh will download https://github.com/docker/machine/releases/download/v0.2.0/docker-machine_linux-amd64 and move it to /usr/local/bin/docker-machine unless already available.     
 When docker-machine is available it will create a host on *ams2* with the name you specified.     
 It will then download and run https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDockerHost.sh, which is a script to create a minimal level of security.     
      
