@@ -18,15 +18,17 @@ OS/Arch (server): linux/amd64
 Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH configuration, and so on.  
 
 *Ubuntu/Debian:*  
-[Stricter settings for your ubuntu server](http://konstruktoid.net/2014/07/07/ubuntu_config-sh-stricter-settings-for-your-ubuntu-server/)  
+[Hardening Ubuntu. Systemd edition.](https://github.com/konstruktoid/hardening/)  
 [CIS Ubuntu 14.04 LTS Server Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/?file=ubuntu1404.100)  
 [StricterDefaults](https://help.ubuntu.com/community/StricterDefaults)  
 
 *RedHat/Fedora:*  
 [A Guide to securing Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/)   
+[CIS Red Hat Enterprise Linux 7 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/?file=rhel7.100)  
 
 *General*  
-[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)
+[Operating System Security Requirements Guide (UNIX Version)](http://stigviewer.com/stig/unix_srg/)  
+[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)  
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
