@@ -1,6 +1,7 @@
 #!/bin/bash
 
 IMAGES="alpine:latest tianon/ubuntu-core:latest ubuntu:latest centos:latest debian:latest fedora:latest busybox:latest oraclelinux:latest"
+UBUNTUCORE="http://cdimage.ubuntu.com/ubuntu-core/daily/current/vivid-core-amd64.tar.gz"
 
 date > docker_images_result
 
@@ -13,12 +14,10 @@ for base in $IMAGES;
     rm $image.tar
   done
 
-if test -e ./ubuntu-core-15.04-beta2-core-amd64.tar.gz;
+if [ -n "$UBUNTUCORE" ];
   then
-    cat ./ubuntu-core-15.04-beta2-core-amd64.tar.gz | sudo docker import - ubuntubeta2:latest
-    docker save -o ubuntubeta2.tar ubuntubeta2:latest
-    du -h ubuntubeta2.tar >> docker_images_result
-    rm ubuntubeta2.tar
-  else
-    echo "ubuntu-core-15.04-beta2-core-amd64.tar.gz not found"
+    docker import $UBUNTUCORE ubuntucore:latest
+    docker save -o ubuntucore.tar ubuntucore:latest
+    du -h ubuntucore.tar >> docker_images_result
+    rm ubuntucore.tar
 fi
