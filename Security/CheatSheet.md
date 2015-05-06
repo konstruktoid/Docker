@@ -102,7 +102,7 @@ For reference:
 
 ##Dockerfile example
 ```sh
-FROM debian:latest [1]
+FROM debian:wheezy [1]
 
 COPY files/example /tmp/example [2]
 ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp/cleanBits.sh [3]
