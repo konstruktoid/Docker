@@ -1,9 +1,13 @@
-Mon May  4 23:21:50 CEST 2015
+Wed May  6 23:41:46 CEST 2015
 5.2M	alpine_latest.tar
 263M	tianon_ubuntu-core_latest.tar
 189M	ubuntu_latest.tar
+131M	ubuntu_vivid.tar
 215M	centos_latest.tar
+203M	centos_6.tar
 125M	debian_latest.tar
+86M	debian_wheezy.tar
+355M	fedora_20.tar
 239M	fedora_latest.tar
 2.6M	busybox_latest.tar
 198M	oraclelinux_latest.tar

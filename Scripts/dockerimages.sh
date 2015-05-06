@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGES="alpine:latest tianon/ubuntu-core:latest ubuntu:latest centos:latest debian:latest fedora:latest busybox:latest oraclelinux:latest"
+IMAGES="alpine:latest tianon/ubuntu-core:latest ubuntu:latest ubuntu:vivid centos:latest centos:6 debian:latest debian:wheezy fedora:20 fedora:latest busybox:latest oraclelinux:latest"
 UBUNTUCORE="http://cdimage.ubuntu.com/ubuntu-core/daily/current/vivid-core-amd64.tar.gz"
 
 date > docker_images_result
