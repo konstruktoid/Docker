@@ -2,15 +2,15 @@
     
 ```sh
 ~$ docker version
-Client version: 1.6.0
+Client version: 1.6.2
 Client API version: 1.18
 Go version (client): go1.4.2
-Git commit (client): 4749651
+Git commit (client): 7c8fca2
 OS/Arch (client): linux/amd64
-Server version: 1.6.0
+Server version: 1.6.2
 Server API version: 1.18
 Go version (server): go1.4.2
-Git commit (server): 4749651
+Git commit (server): 7c8fca2
 OS/Arch (server): linux/amd64
 ```
 
