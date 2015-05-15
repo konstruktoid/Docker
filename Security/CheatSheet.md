@@ -135,3 +135,8 @@ If root user is required:
 
 Unpriv user if possible:  
 `~$ docker run --rm -u dockeru -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name <NAME> -t <IMAGE>`  
+
+## Misc
+### dockertarsum  
+Like the system sum utilites (md5sum, sha1sum, sha256sum, etc), this is a command line tool to get the fixed time checksum of docker image layers.  
+dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum. 
