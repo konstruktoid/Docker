@@ -14,7 +14,7 @@ Git commit (server): 7c8fca2
 OS/Arch (server): linux/amd64
 ```
 
-##Docker daemon host
+##Docker daemon host documentation
 Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH configuration, and so on.  
 
 **Ubuntu/Debian**  
@@ -28,16 +28,20 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 
 **General**  
 [Operating System Security Requirements Guide (UNIX Version)](http://stigviewer.com/stig/unix_srg/)  
-[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)  
+[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)   
+
+## Docker security documentation  
+[Docker Security](https://docs.docker.com/articles/security/)  
+[Introduction to Container Security](https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf) (PDF)  
+[CIS Docker 1.6 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100) (PDF)  
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
 `--selinux-enabled`  
 `--default-ulimit` Set strict limits as default, it's overwritten by `--ulimit` on run.  
-`--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/).
+`--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/).  
 
-`$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem
-  -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`
+`$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`
 
 ##Docker run options 
 ###Capabilities  
