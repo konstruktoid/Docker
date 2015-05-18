@@ -108,6 +108,9 @@ For reference:
 ###User  
 `-u, --user` Run as a unprivileged user.  
 
+###Volumes and mounting
+`--read-only` Mount container root filesystem as read only.  
+`-v /volume:ro` Mount volumes read only if possible.  
 
 ##Dockerfile example
 ```sh
