@@ -86,6 +86,8 @@ For reference:
 `--device` Mount read-only if required.   
 
 ###Labels  
+`--security-opt="apparmor:profile"` Set the AppArmor profile to be applied to the container.   
+`--security-opt label:type:lxc_nonet_t` Set the SELinux label to be applied to the container.  
 
 ###Log and logging drivers  
 `-v /dev/log:/dev/log`   
