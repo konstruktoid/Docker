@@ -99,6 +99,8 @@ For reference:
 `--memory-swap""` Total memory limit.     
 `--ulimit` Set the ulimit on the specific container.  
 
+###Networking  
+`-p IP:host_port:container_port` or `-p IP::port` Specify the external interface.  
 
 ###Time  
 `-v /etc/localtime:/etc/localtime:ro`  
