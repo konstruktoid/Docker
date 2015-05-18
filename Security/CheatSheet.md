@@ -37,7 +37,7 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
-`--selinux-enabled`  
+`--selinux-enabled` Enable if using SELinux.  
 `--default-ulimit` Set strict limits as default, it's overwritten by `--ulimit` on run.  
 `--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/).  
 
@@ -80,13 +80,12 @@ For reference:
 ```
 
 ###Cgroups  
-`--cgroup-parent` Parent cgroup for the container  
+`--cgroup-parent` Parent cgroup for the container.  
 
 ###Devices  
-`--device` Mount read-only if required  
+`--device` Mount read-only if required.   
 
 ###Labels  
-`--security-opt`  Set the SELinux label or AppArmor profile to be applied to the container.   
 
 ###Log and logging drivers  
 `-v /dev/log:/dev/log`   
@@ -96,13 +95,15 @@ For reference:
 `--cpuset-cpus` CPUs in which to allow execution (0-3, 0,1).    
 ` -m, --memory` Memory limit.  
 `--memory-swap""` Total memory limit.     
-`--ulimit` Set the ulimit on the specific container.
+`--ulimit` Set the ulimit on the specific container.  
+
 
 ###Time  
 `-v /etc/localtime:/etc/localtime:ro`  
 
 ###User  
-`-u, --user` Run as a unprivileged user  
+`-u, --user` Run as a unprivileged user.  
+
 
 ##Dockerfile example
 ```sh
