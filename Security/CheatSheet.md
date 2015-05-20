@@ -1,5 +1,5 @@
 # Docker Security Cheat Sheet  
-    
+  
 ```sh
 ~$ docker version
 Client version: 1.6.2
@@ -23,17 +23,18 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 [StricterDefaults](https://help.ubuntu.com/community/StricterDefaults)  
 
 **RedHat/Fedora**  
-[A Guide to securing Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/)   
+[A Guide to securing Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/)  
 [CIS Red Hat Enterprise Linux 7 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/?file=rhel7.100)  
 
 **General**  
 [Operating System Security Requirements Guide (UNIX Version)](http://stigviewer.com/stig/unix_srg/)  
-[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)   
+[Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)  
 
 ## Docker security documentation  
 [Docker Security](https://docs.docker.com/articles/security/)  
 [Introduction to Container Security](https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf) (PDF)  
 [CIS Docker 1.6 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100) (PDF)  
+[Before you initiate a “docker pull”](https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/)    
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
@@ -43,17 +44,17 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 
 `$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`
 
-##Docker run options 
+##Docker run options  
 ###Capabilities  
 `--cap-drop=all` Drop all capabilities by default.  
-`--cap-add net_admin` Allow only needed. 
+`--cap-add net_admin` Allow only needed.  
 
 **Using capsh**  
 ```sh  
 ~$ docker ps
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                           NAMES
-82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx               
-~$ docker exec `docker ps -q` pgrep -a nginx 
+82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx
+~$ docker exec `docker ps -q` pgrep -a nginx
 1 nginx: master process nginx -g daemon off;
 9 nginx: worker process
 ~$ docker exec `docker ps -q` cat /proc/1/status | grep CapEff | awk '{print $NF}'
@@ -66,8 +67,8 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 ```sh
 ~$ docker ps
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                           NAMES
-82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx               
-~$ docker exec `docker ps -q` pgrep -a nginx 
+82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx
+~$ docker exec `docker ps -q` pgrep -a nginx
 1 nginx: master process nginx -g daemon off;
 9 nginx: worker process
 ~$ export getTMP=`mktemp XXXXXX` && docker exec `docker ps -q` /sbin/getpcaps 1 2> $getTMP && cat $getTMP | sed -e 's/.*=//' -e 's/cap_/--cap-add /g' -e 's/,/ /g'
@@ -83,20 +84,20 @@ For reference:
 `--cgroup-parent` Parent cgroup for the container.  
 
 ###Devices  
-`--device` Mount read-only if required.   
+`--device` Mount read-only if required.  
 
 ###Labels  
-`--security-opt="apparmor:profile"` Set the AppArmor profile to be applied to the container.   
+`--security-opt="apparmor:profile"` Set the AppArmor profile to be applied to the container.  
 `--security-opt label:type:lxc_nonet_t` Set the SELinux label to be applied to the container.  
 
 ###Log and logging drivers  
-`-v /dev/log:/dev/log`   
-`--log-driver`  Send container logs to other systems such as Syslog.   
+`-v /dev/log:/dev/log`
+`--log-driver`  Send container logs to other systems such as Syslog.
 
 ###Memory and CPU limits  
-`--cpuset-cpus` CPUs in which to allow execution (0-3, 0,1).    
+`--cpuset-cpus` CPUs in which to allow execution (0-3, 0,1).  
 ` -m, --memory` Memory limit.  
-`--memory-swap""` Total memory limit.     
+`--memory-swap""` Total memory limit.  
 `--ulimit` Set the ulimit on the specific container.  
 
 ###Networking  
@@ -142,7 +143,7 @@ CMD []
 ###Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`  
 
-If root user is required:   
+If root user is required:  
 `~$ docker run --rm -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name <NAME> -t <IMAGE>`  
 
 Unpriv user if possible:  
@@ -151,4 +152,4 @@ Unpriv user if possible:
 ## Misc
 ### dockertarsum  
 Like the system sum utilites (md5sum, sha1sum, sha256sum, etc), this is a command line tool to get the fixed time checksum of docker image layers.  
-dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum. 
+dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum.
