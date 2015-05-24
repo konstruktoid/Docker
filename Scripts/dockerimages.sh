@@ -1,7 +1,31 @@
 #!/bin/bash
 
-IMAGES="alpine:latest tianon/ubuntu-core:latest ubuntu:latest ubuntu:vivid centos:latest centos:6 debian:latest debian:wheezy fedora:20 fedora:latest busybox:latest oraclelinux:latest"
-UBUNTUCORE="http://cdimage.ubuntu.com/ubuntu-core/daily/current/vivid-core-amd64.tar.gz"
+IMAGES="
+  alpine:latest
+  alpine:3.1
+  alpine:2.7
+  alpine:2.6
+  busybox:latest
+  centos:6
+  centos:5
+  centos:7
+  centos:latest
+  debian:latest
+  debian:8
+  debian:7
+  debian:6
+  fedora:20
+  fedora:21
+  fedora:latest
+  oraclelinux:latest
+  tianon/ubuntu-core:latest
+  ubuntu:latest
+  ubuntu:15.04
+  ubuntu:14.10
+  ubuntu:14.04
+"
+
+UBUNTUCORE="http://cdimage.ubuntu.com/ubuntu-core/daily/current/wily-core-amd64.tar.gz"
 
 date > docker_images_result
 
