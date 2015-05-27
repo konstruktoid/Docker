@@ -92,7 +92,7 @@ For reference:
 `--security-opt label:type:lxc_nonet_t` Set the SELinux label to be applied to the container.  
 
 ###Log and logging drivers  
-`-v /dev/log:/dev/log`
+`-v /dev/log:/dev/log`  
 `--log-driver`  Send container logs to other systems such as Syslog.
 
 ###Memory and CPU limits  
