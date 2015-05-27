@@ -31,10 +31,11 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 [Deploy and harden a host with Docker Machine](http://konstruktoid.net/2015/02/23/deploy-and-harden-a-host-with-docker-machine/)  
 
 ## Docker security documentation  
-[Docker Security](https://docs.docker.com/articles/security/)  
-[Introduction to Container Security](https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf) (PDF)  
+[Before you initiate a “docker pull”](https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/)  
 [CIS Docker 1.6 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100) (PDF)  
-[Before you initiate a “docker pull”](https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/)    
+[Docker Security](https://docs.docker.com/articles/security/)  
+[Introduction to Container Security](https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf) (PDF)
+[Secrets: write-up best practices, do's and don'ts, roadmap](https://github.com/docker/docker/issues/13490)  
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
