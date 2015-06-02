@@ -1,3 +1,5 @@
+# Automated build at https://registry.hub.docker.com/u/konstruktoid/cleanbits/
+
 FROM konstruktoid/debian:wheezy
 
 ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp/cleanBits.sh
