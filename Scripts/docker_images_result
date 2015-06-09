@@ -1,5 +1,5 @@
-Sun May 24 23:12:02 CEST 2015
-5.2M	alpine_latest.tar
+Tue Jun  9 01:53:38 CEST 2015
+5.4M	alpine_latest.tar
 5.2M	alpine_3.1.tar
 4.9M	alpine_2.7.tar
 4.7M	alpine_2.6.tar
@@ -14,7 +14,8 @@ Sun May 24 23:12:02 CEST 2015
 78M	debian_6.tar
 355M	fedora_20.tar
 239M	fedora_21.tar
-239M	fedora_latest.tar
+185M	fedora_latest.tar
+46M	konstruktoid_debian_wheezy.tar
 198M	oraclelinux_latest.tar
 263M	tianon_ubuntu-core_latest.tar
 189M	ubuntu_latest.tar

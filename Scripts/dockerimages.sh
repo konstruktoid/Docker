@@ -17,6 +17,7 @@ IMAGES="
   fedora:20
   fedora:21
   fedora:latest
+  konstruktoid/debian:wheezy
   oraclelinux:latest
   tianon/ubuntu-core:latest
   ubuntu:latest
