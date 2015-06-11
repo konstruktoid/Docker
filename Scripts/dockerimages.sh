@@ -1,27 +1,36 @@
-#!/bin/bash
+#!/bin/sh
 
 IMAGES="
   alpine:latest
+  alpine:3.2
   alpine:3.1
   alpine:2.7
   alpine:2.6
   busybox:latest
+  centos:7
+  centos:6.6
   centos:6
   centos:5
-  centos:7
   centos:latest
   debian:latest
   debian:8
   debian:7
   debian:6
-  fedora:20
+  fedora:22
   fedora:21
+  fedora:20
   fedora:latest
+  konstruktoid/debian:jessie
   konstruktoid/debian:wheezy
+  opensuse:13.1
+  opensuse:13.2
+  opensuse:latest
+  oraclelinux:7
+  oraclelinux:6
+  oraclelinux:5
   oraclelinux:latest
-  tianon/ubuntu-core:latest
   ubuntu:latest
-  ubuntu:15.04
+  ubuntu:15.10
   ubuntu:14.10
   ubuntu:14.04
 "
