@@ -14,7 +14,7 @@ for d in $(find $BASE/*_Build -name "Dockerfile"); do
       echo "$d ($(grep '# Force autobuild' "$d" | awk '{print $NF}')) is older than $DEBUPD"
       cd "$(echo "$d" | sed 's/Dockerfile//g')"
       git co master
-      sed "s/# Force autobuild.*/# Force autobuild $(date +%s)/" "$d"
+      sed -i "s/# Force autobuild.*/# Force autobuild $(date +%s)/" "$d"
       git add Dockerfile
       git commit -m "Force autobuild"
       git push -f
