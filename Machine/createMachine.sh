@@ -2,13 +2,14 @@
 # https://github.com/docker/machine
 # https://www.digitalocean.com/
 
-MACHINE="/usr/local/bin/docker-machine"
-MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.2.0/docker-machine_linux-amd64"
-HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDockerHost.sh"
 ACCESSTOKEN=""
+LOCATION="ams2"
+
+MACHINE="/usr/local/bin/docker-machine"
+MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.3.0/docker-machine_linux-amd64"
+HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDockerHost.sh"
 
 INPUT="$@"
-
 
 if ! test -d "$TMP";
   then
@@ -37,7 +38,7 @@ if ! test -x "$MACHINE";
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9 
     sudo apt-get update && sudo apt-get -y upgrade
     sudo apt-get install lxc-docker
-    sudo addgroup `whoami` docker
+    sudo addgroup "$(whoami)" docker
     cd $TMP && wget -nv $MACHINERELEASE
     sudo mv $TMP/docker-machine_linux-amd64 /usr/local/bin/
     sudo chown root:root /usr/local/bin/docker-machine_linux-amd64
@@ -46,11 +47,11 @@ if ! test -x "$MACHINE";
     docker-machine -v
 fi
 
-if [ -z $INPUT ];
+if [ -z "$INPUT" ];
   then
     echo "Machine name required"
     exit
   else
-    docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region ams2 $@
-    docker-machine ssh $@ "wget -O /tmp/baselineDockerHost.sh $HARDENING; /bin/bash /tmp/baselineDockerHost.sh"
+    docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region "$LOCATION" "$@"
+    docker-machine ssh "$@" "wget -O /tmp/baselineDockerHost.sh $HARDENING; /bin/bash /tmp/baselineDockerHost.sh"
 fi
