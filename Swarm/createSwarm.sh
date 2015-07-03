@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # https://github.com/docker/machine
 # https://github.com/docker/swarm
 # https://www.digitalocean.com/
@@ -27,15 +27,15 @@ if [ -z "$ORIGIN" ] || [ -z "$MASTER" ] || [ -z "$NODES" ];
     exit
   else
     docker-machine create --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region $REGION $ORIGIN
-    $(docker-machine env $ORIGIN)
+    eval "$(docker-machine env $ORIGIN)"
 
     docker run swarm create 1> $TMP/swarm
-    SWARMTOKEN=`cat $TMP/swarm`
+    SWARMTOKEN="$(cat $TMP/swarm)"
 
-    docker-machine create --swarm --swarm-master --swarm-discovery token://`echo $SWARMTOKEN` --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region $REGION $MASTER 
+    docker-machine create --swarm --swarm-master --swarm-discovery token://"$SWARMTOKEN" --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region $REGION $MASTER
 
     for node in $NODES;
       do
-        docker-machine create --swarm  --swarm-discovery token://`echo $SWARMTOKEN` --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region $REGION $node
+        docker-machine create --swarm  --swarm-discovery token://"$SWARMTOKEN" --driver digitalocean --digitalocean-access-token $ACCESSTOKEN --digitalocean-region $REGION "$node"
       done
 fi
