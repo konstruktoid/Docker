@@ -41,16 +41,16 @@ date > docker_images_result
 
 for base in $IMAGES;
   do
-    image=`echo $base | sed -e 's/\//_/g' -e 's/:/_/g'`
-    docker pull $base
-    docker save -o $image.tar $base
-    du -h $image.tar >> docker_images_result
-    rm $image.tar
+    image=$(echo "$base" | sed -e 's/\//_/g' -e 's/:/_/g')
+    docker pull "$base"
+    docker save -o "$image.tar" "$base"
+    du -h "$image.tar" >> docker_images_result
+    rm "$image.tar"
   done
 
 if [ -n "$UBUNTUCORE" ];
   then
-    docker import $UBUNTUCORE ubuntucore:latest
+    docker import "$UBUNTUCORE" ubuntucore:latest
     docker save -o ubuntucore.tar ubuntucore:latest
     du -h ubuntucore.tar >> docker_images_result
     rm ubuntucore.tar
