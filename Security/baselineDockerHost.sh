@@ -51,7 +51,8 @@ do
   fi
 done
 
-for SHELL in $(cat /etc/shells); do
+grep -v "^#" /etc/shells | while IFS= read -r SHELL
+do
   if [ -x "$SHELL" ]; then
     chmod -s "$SHELL"
   fi
