@@ -1,4 +1,4 @@
-Fri Jun 26 02:08:55 CEST 2015
+Tue Aug  4 00:23:14 CEST 2015
 5.4M	alpine_latest.tar
 5.4M	alpine_3.2.tar
 5.2M	alpine_3.1.tar
@@ -16,19 +16,19 @@ Fri Jun 26 02:08:55 CEST 2015
 78M	debian_6.tar
 185M	fedora_22.tar
 239M	fedora_21.tar
-355M	fedora_20.tar
+287M	fedora_20.tar
 185M	fedora_latest.tar
 79M	konstruktoid_debian_jessie.tar
 46M	konstruktoid_debian_wheezy.tar
 253M	opensuse_13.1.tar
-253M	opensuse_13.2.tar
-253M	opensuse_latest.tar
+92M	opensuse_13.2.tar
+92M	opensuse_latest.tar
 189M	oraclelinux_7.tar
-158M	oraclelinux_6.tar
+156M	oraclelinux_6.tar
 482M	oraclelinux_5.tar
 189M	oraclelinux_latest.tar
 189M	ubuntu_latest.tar
-133M	ubuntu_15.10.tar
+135M	ubuntu_15.10.tar
 194M	ubuntu_14.10.tar
 189M	ubuntu_14.04.tar
 134M	ubuntucore.tar
