@@ -1,17 +1,22 @@
 # Docker Security Cheat Sheet  
   
 ```sh
-~$ docker version
-Client version: 1.6.2
-Client API version: 1.18
-Go version (client): go1.4.2
-Git commit (client): 7c8fca2
-OS/Arch (client): linux/amd64
-Server version: 1.6.2
-Server API version: 1.18
-Go version (server): go1.4.2
-Git commit (server): 7c8fca2
-OS/Arch (server): linux/amd64
+$ docker version
+Client:
+ Version:      1.8.1
+ API version:  1.20
+ Go version:   go1.4.2
+ Git commit:   d12ea79
+ Built:        Thu Aug 13 02:40:42 UTC 2015
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      1.8.1
+ API version:  1.20
+ Go version:   go1.4.2
+ Git commit:   d12ea79
+ Built:        Thu Aug 13 02:40:42 UTC 2015
+ OS/Arch:      linux/amd64
 ```
 
 ##Docker daemon host documentation
