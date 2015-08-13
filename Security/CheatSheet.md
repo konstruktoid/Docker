@@ -54,7 +54,8 @@ dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum
 `--default-ulimit` Set strict limits as default, it's overwritten by `--ulimit` on run.  
 `--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/).  
 
-`$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`
+`$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`  
+[genCert.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genCert.sh) is a script to automatically generate the above certificates.  
 
 ##Docker run options  
 ###Capabilities  
