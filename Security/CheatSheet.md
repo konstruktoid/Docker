@@ -142,8 +142,7 @@ ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanB
 RUN \
     apt-get update && \
     apt-get -y upgrade && \ [4]
-    apt-get -y clean && \
-    apt-get -y autoremove
+    apt-get -y clean
 
 RUN \
     useradd --system --no-create-home --user-group --shell /bin/false dockeru && \ [5]
