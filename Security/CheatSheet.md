@@ -39,10 +39,11 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 [Before you initiate a “docker pull”](https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/)  
 [CIS Docker 1.6 Benchmark v1.0.0](https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100) (PDF)  
 [Docker Security](https://docs.docker.com/articles/security/)  
-[Docker Security Cheat Sheet](http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf)(PDF)  
+[Docker Security Cheat Sheet](http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf) (PDF)  
 [Introduction to Container Security](https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf) (PDF)  
 [Secrets: write-up best practices, do's and don'ts, roadmap](https://github.com/docker/docker/issues/13490)  
 [Securing Docker Containers with sVirt and Trusted Sources](http://crunchtools.com/securing-docker-svirt/)  
+[Why we don't let non-root users run Docker](http://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/)  
 
 ## Docker security tools
 ### Docker Bench for Security
