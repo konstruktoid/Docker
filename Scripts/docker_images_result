@@ -1,4 +1,4 @@
-Tue Aug  4 00:23:14 CEST 2015
+Wed Sep 16 21:15:16 CEST 2015
 5.4M	alpine_latest.tar
 5.4M	alpine_3.2.tar
 5.2M	alpine_3.1.tar
@@ -7,7 +7,7 @@ Tue Aug  4 00:23:14 CEST 2015
 2.6M	busybox_latest.tar
 172M	centos_7.tar
 203M	centos_6.6.tar
-204M	centos_6.tar
+189M	centos_6.tar
 284M	centos_5.tar
 172M	centos_latest.tar
 125M	debian_latest.tar
@@ -28,7 +28,7 @@ Tue Aug  4 00:23:14 CEST 2015
 482M	oraclelinux_5.tar
 189M	oraclelinux_latest.tar
 189M	ubuntu_latest.tar
-135M	ubuntu_15.10.tar
+131M	ubuntu_15.10.tar
 194M	ubuntu_14.10.tar
 189M	ubuntu_14.04.tar
-134M	ubuntucore.tar
+130M	ubuntucore.tar
