@@ -3,19 +3,19 @@
 ```sh
 $ docker version
 Client:
- Version:      1.8.1
- API version:  1.20
+ Version:      1.9.0-rc2
+ API version:  1.21
  Go version:   go1.4.2
- Git commit:   d12ea79
- Built:        Thu Aug 13 02:40:42 UTC 2015
+ Git commit:   60d36f7
+ Built:        Fri Oct 23 02:23:42 UTC 2015
  OS/Arch:      linux/amd64
 
 Server:
- Version:      1.8.1
- API version:  1.20
+ Version:      1.9.0-rc2
+ API version:  1.21
  Go version:   go1.4.2
- Git commit:   d12ea79
- Built:        Thu Aug 13 02:40:42 UTC 2015
+ Git commit:   60d36f7
+ Built:        Fri Oct 23 02:23:42 UTC 2015
  OS/Arch:      linux/amd64
 ```
 
@@ -54,14 +54,17 @@ Docker Bench for Security is available at https://dockerbench.com.
 Like the system sum utilites (md5sum, sha1sum, sha256sum, etc), this is a command line tool to get the fixed time checksum of docker image layers.  
 dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum.  
 
+### Notary
+The Notary project comprises a server and a client for running and interacting with trusted collections. [Notary](https://github.com/docker/notary)
+
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
 `--selinux-enabled` Enable if using SELinux.  
 `--default-ulimit` Set strict limits as default, it's overwritten by `--ulimit` on run.  
-`--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/).  
+`--tlsverify` Enable TLS, [Protecting the Docker daemon Socket with HTTPS](https://docs.docker.com/articles/https/). [genCert.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genCert.sh) is a script to automatically generate certificates.  
+`--userns-remap=default` Enable user namespace.  
 
-`$ docker -d --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`  
-[genCert.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genCert.sh) is a script to automatically generate the above certificates.  
+`docker -d --userns-remap=default --tlsverify --tlscacert=ca.pem --tlscert=server-cert.pem --tlskey=server-key.pem -H=0.0.0.0:2376 -icc=false --default-ulimit nproc=512:1024 --default-ulimit nfile=50:100`  
 
 ##Docker run options  
 ###Capabilities  
@@ -111,12 +114,18 @@ For reference:
 
 ###Log and logging drivers  
 `-v /dev/log:/dev/log`  
-`--log-driver`  Send container logs to other systems such as Syslog.
+`--log-driver` Send container logs to other systems such as Syslog, see https://docs.docker.com/reference/logging/overview/.
 
-###Memory and CPU limits  
+###Memory and CPU limits
+`--cpu-shares` CPU shares (relative weight).  
+`--cpu-period` Limit CPU CFS (Completely Fair Scheduler) period.  
+`--cpu-quota` Limit CPU CFS (Completely Fair Scheduler) quota.  
 `--cpuset-cpus` CPUs in which to allow execution (0-3, 0,1).  
-` -m, --memory` Memory limit.  
-`--memory-swap""` Total memory limit.  
+`--cpuset-mems` MEMs in which to allow execution (0-3, 0,1).  
+`--kernel-memory` Kernel memory limit.  
+`-m, --memory` Memory limit.  
+`--memory-reservation` Memory soft limit.  
+`--memory-swap` Total memory (memory + swap), '-1' to disable swap.  
 `--ulimit` Set the ulimit on the specific container.  
 
 ###Networking  
@@ -124,6 +133,9 @@ For reference:
 
 ###Time  
 `-v /etc/localtime:/etc/localtime:ro`  
+
+###Trust
+`--disable-content-trust` See [Content trust in Docker](https://docs.docker.com/security/trust/content_trust/)  
 
 ###User  
 `-u, --user` Run as a unprivileged user.  
