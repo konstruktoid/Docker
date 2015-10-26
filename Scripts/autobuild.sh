@@ -18,7 +18,7 @@ for d in $(find $BASE/*_Build -name "Dockerfile"); do
       git add Dockerfile
       git commit -m "Force autobuild"
       git push -f
-      cd "$base"
+      cd "$BASE"
     fi
   fi
 done
