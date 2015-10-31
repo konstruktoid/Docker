@@ -38,8 +38,6 @@ IMAGES="
   ubuntu:14.04
 "
 
-UBUNTUCORE="http://cdimage.ubuntu.com/ubuntu-core/daily/current/wily-core-amd64.tar.gz"
-
 date > docker_images_result
 
 for base in $IMAGES;
@@ -50,11 +48,3 @@ for base in $IMAGES;
     du -h "$image.tar" >> docker_images_result
     rm "$image.tar"
   done
-
-if [ -n "$UBUNTUCORE" ];
-  then
-    docker import "$UBUNTUCORE" ubuntucore:latest
-    docker save -o ubuntucore.tar ubuntucore:latest
-    du -h ubuntucore.tar >> docker_images_result
-    rm ubuntucore.tar
-fi
