@@ -22,6 +22,8 @@ IMAGES="
   fedora:latest
   konstruktoid/debian:jessie
   konstruktoid/debian:wheezy
+  konstruktoid/ubuntu:trusty
+  konstruktoid/ubuntu:wily
   opensuse:13.1
   opensuse:13.2
   opensuse:latest
