@@ -20,6 +20,7 @@ IMAGES="
   fedora:21
   fedora:20
   fedora:latest
+  konstruktoid/alpine:latest
   konstruktoid/debian:jessie
   konstruktoid/debian:wheezy
   konstruktoid/ubuntu:trusty
