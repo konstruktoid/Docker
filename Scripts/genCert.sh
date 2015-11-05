@@ -58,7 +58,7 @@ chmod 0400 $DIR/server*key.pem $DIR/ca*key.pem
 
 SETTINGS="
 DOCKER DAEMON SETTINGS:
-docker -d --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERVERKEY -H=0.0.0.0:2376
+docker daemon --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERVERKEY -H=0.0.0.0:2376
 
 DOCKER CLIENT SETTINGS:
 docker --tlsverify --tlscacert=$CACRT --tlscert=$CLIENTCRT --tlskey=$CLIENTKEY -H=$FQDN:2376 version
