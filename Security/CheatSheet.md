@@ -3,20 +3,22 @@
 ```sh
 $ docker version
 Client:
- Version:      1.9.0-rc2
- API version:  1.21
- Go version:   go1.4.2
- Git commit:   60d36f7
- Built:        Fri Oct 23 02:23:42 UTC 2015
+ Version:      1.10.0-dev
+ API version:  1.22
+ Go version:   go1.5.1
+ Git commit:   67630be
+ Built:        Tue Nov  3 23:29:03 UTC 2015
  OS/Arch:      linux/amd64
+ Experimental: true
 
 Server:
- Version:      1.9.0-rc2
- API version:  1.21
- Go version:   go1.4.2
- Git commit:   60d36f7
- Built:        Fri Oct 23 02:23:42 UTC 2015
+ Version:      1.10.0-dev
+ API version:  1.22
+ Go version:   go1.5.1
+ Git commit:   67630be
+ Built:        Tue Nov  3 23:29:03 UTC 2015
  OS/Arch:      linux/amd64
+ Experimental: true
 ```
 
 ##Docker daemon host documentation
