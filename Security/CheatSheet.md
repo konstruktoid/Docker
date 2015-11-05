@@ -57,7 +57,7 @@ Like the system sum utilites (md5sum, sha1sum, sha256sum, etc), this is a comman
 dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum.  
 
 ### Notary
-The Notary project comprises a server and a client for running and interacting with trusted collections. [Notary](https://github.com/docker/notary)
+The Notary project comprises a server and a client for running and interacting with trusted collections. See [Notary](https://github.com/docker/notary).
 
 ##Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
