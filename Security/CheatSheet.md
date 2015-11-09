@@ -48,6 +48,9 @@ Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH con
 [Why we don't let non-root users run Docker](http://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/)  
 
 ## Docker security tools
+### Bane
+Custom AppArmor profile generator for Docker containers, available at https://github.com/jfrazelle/bane.
+
 ### Docker Bench for Security
 Docker Bench for Security is a script that checks for all the automatable tests included in the [CIS Docker 1.6 Benchmark](https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100).  
 Docker Bench for Security is available at https://dockerbench.com.
