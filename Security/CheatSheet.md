@@ -21,7 +21,7 @@ Server:
  Experimental: true
 ```
 
-##Docker daemon host documentation
+## Docker daemon host documentation
 Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH configuration, and so on.  
 
 **Ubuntu/Debian**  
@@ -62,7 +62,7 @@ dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum
 ### Notary
 The Notary project comprises a server and a client for running and interacting with trusted collections. See [Notary](https://github.com/docker/notary).
 
-##Docker daemon options  
+## Docker daemon options  
 `--icc=false` Use `--link` on run instead.  
 `--selinux-enabled` Enable if using SELinux.  
 `--default-ulimit` Set strict limits as default, it's overwritten by `--ulimit` on run.  
@@ -71,8 +71,8 @@ The Notary project comprises a server and a client for running and interacting w
 
 `/usr/bin/docker daemon -s overlay --userns-remap=default --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
 
-##Docker run options  
-###Capabilities  
+## Docker run options  
+### Capabilities  
 `--cap-drop=all` Drop all capabilities by default.  
 `--cap-add net_admin` Allow only needed.  
 
@@ -107,21 +107,21 @@ For reference:
 ~$ curl https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/capability.h | grep " CAP_" | awk '{print $2, $3}'
 ```
 
-###Cgroups  
+### Cgroups  
 `--cgroup-parent` Parent cgroup for the container.  
 
-###Devices  
+### Devices  
 `--device` Mount read-only if required.  
 
-###Labels  
+### Labels  
 `--security-opt="apparmor:profile"` Set the AppArmor profile to be applied to the container.  
 `--security-opt label:type:lxc_nonet_t` Set the SELinux label to be applied to the container.  
 
-###Log and logging drivers  
+### Log and logging drivers  
 `-v /dev/log:/dev/log`  
 `--log-driver` Send container logs to other systems such as Syslog, see https://docs.docker.com/reference/logging/overview/.
 
-###Memory and CPU limits
+### Memory and CPU limits
 `--cpu-shares` CPU shares (relative weight).  
 `--cpu-period` Limit CPU CFS (Completely Fair Scheduler) period.  
 `--cpu-quota` Limit CPU CFS (Completely Fair Scheduler) quota.  
@@ -133,23 +133,23 @@ For reference:
 `--memory-swap` Total memory (memory + swap), '-1' to disable swap.  
 `--ulimit` Set the ulimit on the specific container.  
 
-###Networking  
+### Networking  
 `-p IP:host_port:container_port` or `-p IP::port` Specify the external interface.  
 
-###Time  
+### Time  
 `-v /etc/localtime:/etc/localtime:ro`  
 
-###Trust
+### Trust
 `--disable-content-trust` See [Content trust in Docker](https://docs.docker.com/security/trust/content_trust/)  
 
-###User  
+### User  
 `-u, --user` Run as a unprivileged user.  
 
-###Volumes and mounting
+### Volumes and mounting
 `--read-only` Mount container root filesystem as read only.  
 `-v /volume:ro` Mount volumes read only if possible.  
 
-##Dockerfile example
+## Dockerfile example
 ```sh
 FROM debian:wheezy [1]
 
@@ -175,7 +175,7 @@ CMD []
 4. Keep the container up-to-date
 5. Use a local unprivileged user account
 
-###Docker run example
+### Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`  
 
 If root user is required:  
