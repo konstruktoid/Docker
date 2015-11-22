@@ -183,3 +183,9 @@ If root user is required:
 
 Unpriv user if possible:  
 `~$ docker run --rm -u dockeru -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name <NAME> -t <IMAGE>`  
+
+## Garbage collection
+### docker-gc
+[spotify/docker-gc](https://github.com/spotify/docker-gc)  
+### docker-garby
+[konstruktoid/docker-garby](https://github.com/konstruktoid/docker-garby)  
