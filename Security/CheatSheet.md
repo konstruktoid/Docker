@@ -5,18 +5,18 @@ $ docker version
 Client:
  Version:      1.10.0-dev
  API version:  1.22
- Go version:   go1.5.1
- Git commit:   67630be
- Built:        Tue Nov  3 23:29:03 UTC 2015
+ Go version:   go1.5.2
+ Git commit:   de7b80d
+ Built:        Tue Dec  8 22:18:49 2015
  OS/Arch:      linux/amd64
  Experimental: true
 
 Server:
  Version:      1.10.0-dev
  API version:  1.22
- Go version:   go1.5.1
- Git commit:   67630be
- Built:        Tue Nov  3 23:29:03 UTC 2015
+ Go version:   go1.5.2
+ Git commit:   de7b80d
+ Built:        Tue Dec  8 22:18:49 2015
  OS/Arch:      linux/amd64
  Experimental: true
 ```
