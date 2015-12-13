@@ -140,7 +140,7 @@ For reference:
 `-v /etc/localtime:/etc/localtime:ro`  
 
 ### Seccomp
-`--security-opt seccomp:/path/to/seccomp/profile.json` See [Seccomp security profiles for Docker](https://github.com/docker/docker/blob/master/docs/security/seccomp.md)  
+`--security-opt seccomp:/path/to/seccomp/profile.json` See [Seccomp security profiles for Docker](https://github.com/docker/docker/blob/master/docs/security/seccomp.md), [genSeccomp.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genSeccomp.sh) is a basice profile generator.  
 
 ### Trust
 `--disable-content-trust` See [Content trust in Docker](https://docs.docker.com/security/trust/content_trust/)  
