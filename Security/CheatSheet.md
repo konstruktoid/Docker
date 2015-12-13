@@ -139,6 +139,9 @@ For reference:
 ### Time  
 `-v /etc/localtime:/etc/localtime:ro`  
 
+### Seccomp
+`--security-opt seccomp:/path/to/seccomp/profile.json` See [Seccomp security profiles for Docker](https://github.com/docker/docker/blob/master/docs/security/seccomp.md)  
+
 ### Trust
 `--disable-content-trust` See [Content trust in Docker](https://docs.docker.com/security/trust/content_trust/)  
 
