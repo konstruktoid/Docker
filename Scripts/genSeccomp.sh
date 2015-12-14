@@ -1,13 +1,19 @@
 #!/bin/sh
-# Add the syscalls to be blocked to $DENY,
-# outputs a file named seccomp-<date>.json
+# Writes a .json file named seccomp-<date>.json with the blocked syscalls defined in a file
 #
-# https://filippo.io/linux-syscall-table/
 # docker run -ti --security-opt seccomp:/file/path/seccomp-1512132157.json busybox sh
-
-DENY="chroot mount umount ptrace"
+#
+# https://github.com/torvalds/linux/blob/master/arch/x86/entry/syscalls/syscall_64.tbl
 
 date="$(date -u +%y%m%d%H%M)"
+
+if [ -z "$1" ]; then
+  echo "Arument missing, which should be file with a syscall per line."
+  exit 1
+else
+  FILE="$1"
+fi
+
 PREFILE="$(mktemp)"
 CALLSPREFILE="$(mktemp)"
 POSTFILE="seccomp-$date.json"
@@ -20,13 +26,14 @@ echo "
 }
 
 calls(){
-for call in $DENY; do
+while read call
+do
   echo "
         {
               'name': '$call',
               'action': 'SCMP_ACT_ERRNO'
          },"
-done
+done < "$FILE"
 }
 
 end(){
@@ -44,3 +51,6 @@ sed -e 's/'\''/"/g' -e '/^\s*$/d' "$PREFILE" > "$POSTFILE"
 
 rm "$PREFILE"
 rm "$CALLSPREFILE"
+
+echo "# $POSTFILE"
+cat "$POSTFILE"
