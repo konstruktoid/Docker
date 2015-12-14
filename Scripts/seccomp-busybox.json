@@ -1,0 +1,149 @@
+{
+    "defaultAction": "SCMP_ACT_ERRNO",
+    "syscalls": [
+        {
+              "name": "read",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "write",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "open",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "close",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "stat",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "fstat",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "lstat",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "poll",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "lseek",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "brk",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getpid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "clone",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "fork",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "vfork",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "exit",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "wait4",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "fchown",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getuid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getgid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "setuid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "setgid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getppid",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "setgroups",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "capget",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "capset",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "prctl",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "arch_prctl",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getdents64",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "getcwd",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "exit_group",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "epoll_wait",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "utimes",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "openat",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "setns",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "ioctl",
+              "action": "SCMP_ACT_ALLOW"
+         },
+        {
+              "name": "execve",
+              "action": "SCMP_ACT_ALLOW"
+         }
+    ]
+}
