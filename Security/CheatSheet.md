@@ -136,11 +136,14 @@ For reference:
 ### Networking  
 `-p IP:host_port:container_port` or `-p IP::port` Specify the external interface.  
 
+### Seccomp
+`--security-opt seccomp:/path/to/seccomp/profile.json` See [Seccomp security profiles for Docker](https://github.com/docker/docker/blob/master/docs/security/seccomp.md), [genSeccomp.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genSeccomp.sh) is a basice profile generator.  
+
 ### Time  
 `-v /etc/localtime:/etc/localtime:ro`  
 
-### Seccomp
-`--security-opt seccomp:/path/to/seccomp/profile.json` See [Seccomp security profiles for Docker](https://github.com/docker/docker/blob/master/docs/security/seccomp.md), [genSeccomp.sh](https://github.com/konstruktoid/Docker/blob/master/Scripts/genSeccomp.sh) is a basice profile generator.  
+### Tmpfs  
+`--read-only --tmpfs /run --tmpfs /tmp` See [Making Docker images read-only in production](http://www.projectatomic.io/blog/2015/12/making-docker-images-write-only-in-production/)
 
 ### Trust
 `--disable-content-trust` See [Content trust in Docker](https://docs.docker.com/security/trust/content_trust/)  
