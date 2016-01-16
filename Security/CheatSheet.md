@@ -190,6 +190,52 @@ If root user is required:
 Unpriv user if possible:  
 `~$ docker run --rm -u dockeru -v /etc/localtime:/etc/localtime:ro -v /dev/log:/dev/log $CAP --name <NAME> -t <IMAGE>`  
 
+Running [Polipo](https://github.com/konstruktoid/Polipo_Build) with an Apparmor profile, read-only root system, no capabilites and tmpfs:  
+```sh
+$ docker run --restart="always" --name polipo --security-opt="apparmor:docker-polipo" -d -p 8123:8123 --cap-drop=all --read-only --tmpfs /tmp:rw,nosuid,nodev,noexec,size=100m --tmpfs /var/log:rw,nosuid,nodev,noexec --tmpfs /var/cache:rw,nosuid,noexec,nodev --tmpfs /run:rw,noexec,nodev,nosuid konstruktoid/polipo proxyAddress=::0 allowedClients=192.168.1.0/24
+$ docker exec -ti polipo mount | grep tmpfs
+tmpfs on /dev type tmpfs (ro,mode=755)
+tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,relatime,mode=755)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+tmpfs on /var/log type tmpfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noexec,relatime,size=102400k)
+tmpfs on /var/cache type tmpfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /proc/kcore type tmpfs (ro,mode=755)
+tmpfs on /proc/timer_stats type tmpfs (ro,mode=755)
+$ docker exec -ti polipo touch /test
+touch: cannot touch `/test': Read-only file system
+$ docker exec -ti polipo touch /var/tmp/test
+touch: cannot touch `/var/tmp/test': Read-only file system
+$ docker exec -ti polipo touch /tmp/test
+$ docker exec -ti polipo touch /var/cache/polipo/test
+$ docker exec -ti polipo ls -l /var/cache/polipo
+total 0
+drwx------ 2 polipo polipo   80 Jan 16 21:08 cdn.tentonhammer.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 cnn.com
+drwx------ 2 polipo polipo  120 Jan 16 21:08 data.cnn.com
+drwx------ 2 polipo polipo  300 Jan 16 21:08 edition.cnn.com
+drwx------ 2 polipo polipo  480 Jan 16 21:08 edition.i.cdn.cnn.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 elitistjerks.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 eweek.com
+drwx------ 2 polipo polipo  660 Jan 16 21:08 forums.elitistjerks.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 imdb.com
+drwx------ 2 polipo polipo   80 Jan 16 21:08 imp.admarketplace.net
+drwx------ 2 polipo polipo   80 Jan 16 21:08 odb.outbrain.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 slashdot.com
+drwx------ 2 polipo polipo   80 Jan 16 21:08 slashdot.org
+drwx------ 2 polipo polipo  240 Jan 16 21:08 sponsored.eweek.com
+drwx------ 2 polipo polipo 1740 Jan 16 21:08 static.images-di.se
+drwx------ 2 polipo polipo   60 Jan 16 21:05 stats.pagefair.net
+-rw-r--r-- 1 polipo polipo    0 Jan 16 21:00 test
+drwx------ 2 polipo polipo   60 Jan 16 21:08 www.cnn.com
+drwx------ 2 polipo polipo 1360 Jan 16 21:08 www.di.se
+drwx------ 2 polipo polipo 1220 Jan 16 21:08 www.eweek.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 www.imdb.com
+drwx------ 2 polipo polipo   60 Jan 16 21:08 z-ecx.images-amazon.com
+drwx------ 2 polipo polipo  200 Jan 16 21:08 z.cdn.turner.com
+```
+
 ## Garbage collection
 ### docker-gc
 [spotify/docker-gc](https://github.com/spotify/docker-gc)  
