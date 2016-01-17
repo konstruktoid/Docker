@@ -157,29 +157,34 @@ For reference:
 
 ## Dockerfile example
 ```sh
-FROM debian:wheezy [1]
+FROM alpine:3.2  [1]
 
-COPY files/example /tmp/example [2]
-ADD https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/cleanBits.sh /tmp/cleanBits.sh [3]
+ENV VERSION 1.9.1
 
-RUN \
-    apt-get update && \
-    apt-get -y upgrade && \ [4]
-    apt-get -y clean
+WORKDIR /usr/bin
 
-RUN \
-    useradd --system --no-create-home --user-group --shell /bin/false dockeru && \ [5]
-    /bin/bash /tmp/cleanBits.sh
+RUN apk update && \
+    apk upgrade && \  [2]
+    apk --update add coreutils curl && \
+    curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION > docker-$VERSION && \
+    curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.sha256 > docker-$VERSION.sha256 && \
+    sha256sum -c docker-$VERSION.sha256 && \  [3]
+    ln -s docker-$VERSION docker && \
+    chmod u+x docker-$VERSION && \
+    apk del curl && \
+    rm -rf /var/cache/apk/*  [4]
 
-ENTRYPOINT ["/bin/bash"]
-CMD []
+COPY ./docker-garby.sh /docker-garby.sh   [5]
+
+ENTRYPOINT ["/bin/sh", "/docker-garby.sh"]
 ```
 
 1. Do we trust the remote repository? Is there any reason we're not using a homebuilt base image?  
-2. COPY local files  
-3. ADD remote files
-4. Keep the container up-to-date
-5. Use a local unprivileged user account
+2. Keep the container up-to-date  
+3. Verify downloaded files  
+4. Remove unused applications and unnecessary directories  
+5. COPY local files, ADD remote files  
+7. Create an unprivileged USER if possible
 
 ### Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`  
