@@ -25,6 +25,7 @@ IMAGES="
   konstruktoid/debian:wheezy
   konstruktoid/ubuntu:trusty
   konstruktoid/ubuntu:wily
+  konstruktoid/ubuntu:xenial
   opensuse:13.1
   opensuse:13.2
   opensuse:latest
@@ -33,6 +34,7 @@ IMAGES="
   oraclelinux:5
   oraclelinux:latest
   ubuntu:latest
+  ubuntu:16.04
   ubuntu:15.10
   ubuntu:14.10
   ubuntu:14.04
