@@ -17,13 +17,19 @@ fi
 
 if [ "$INPUT" = "install" ]; then
    cd $TMP &&
-   curl -L $MACHINERELEASE > machine.zip && \
-   unzip machine.zip && \
-   rm machine.zip && \
-   sudo mv -f docker-machine* /usr/local/bin
-   sudo chown root:root /usr/local/bin/docker-machine*
-   sudo chmod 0755 /usr/local/bin/docker-machine*
-   /usr/local/bin/docker-machine -v
+   sudo curl -L $MACHINERELEASE > $TMP/machine
+
+   if [ "$(openssl sha1 -sha256 $TMP/machine | awk '{print $NF}')" != "$SHA256SUM" ]; then
+    echo "SHA256 mismatch. Exiting."
+    exit 1
+  else
+    echo "SHA256 OK."
+   fi
+
+  sudo mv $TMP/machine $MACHINE
+   sudo chown root:root $MACHINE*
+   sudo chmod 0755 $MACHINE*
+   $MACHINE -v
    exit
 fi
 
