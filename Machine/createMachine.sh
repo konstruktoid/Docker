@@ -12,30 +12,30 @@ HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security
 SHA256SUM="ebaf9fc4bdc19e8523905490af422ab4db5dea7bd399c917c7e00851a65d3df5"
 
 if ! test -d "$TMP"; then
-   TMP=/tmp
+  TMP=/tmp
 fi
 
 if [ "$INPUT" = "install" ]; then
-   cd $TMP &&
-   sudo curl -L $MACHINERELEASE > $TMP/machine
+  echo "Downloading $MACHINERELEASE."
+  curl -sSL $MACHINERELEASE > $TMP/machine
 
-   if [ "$(openssl sha1 -sha256 $TMP/machine | awk '{print $NF}')" != "$SHA256SUM" ]; then
+  if [ "$(openssl sha1 -sha256 $TMP/machine | awk '{print $NF}')" != "$SHA256SUM" ]; then
     echo "SHA256 mismatch. Exiting."
     exit 1
   else
     echo "SHA256 OK."
-   fi
+  fi
 
   sudo mv $TMP/machine $MACHINE
-   sudo chown root:root $MACHINE*
-   sudo chmod 0755 $MACHINE*
-   $MACHINE -v
-   exit
+  sudo chown root:root $MACHINE*
+  sudo chmod 0755 $MACHINE*
+  $MACHINE -v
+  exit
 fi
 
 if [ -z "$ACCESSTOKEN" ]; then
-   echo "ACCESSTOKEN required"
-   exit
+  echo "ACCESSTOKEN required"
+  exit
 fi
 
 if ! test -x "$MACHINE"; then
@@ -43,9 +43,9 @@ if ! test -x "$MACHINE"; then
 fi
 
 if [ -z "$INPUT" ]; then
-   echo "Machine name required"
-   exit 1
-  else
-   docker-machine create --driver digitalocean --digitalocean-access-token "$ACCESSTOKEN" --digitalocean-region "$LOCATION" "$INPUT"
-   docker-machine ssh "$INPUT" "wget -O /tmp/baselineDockerHost.sh $HARDENING; /bin/bash /tmp/baselineDockerHost.sh"
+  echo "Machine name required"
+  exit 1
+else
+  docker-machine create --driver digitalocean --digitalocean-access-token "$ACCESSTOKEN" --digitalocean-region "$LOCATION" "$INPUT"
+  docker-machine ssh "$INPUT" "wget -O /tmp/baselineDockerHost.sh $HARDENING; /bin/bash /tmp/baselineDockerHost.sh"
 fi
