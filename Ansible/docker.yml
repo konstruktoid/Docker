@@ -1,0 +1,55 @@
+---
+- name: docker installation
+  hosts: all
+  vars:
+    repo: experimental
+
+  tasks:
+  - name: apt-transport-https installation
+    become: yes
+    become_method: sudo
+    apt:
+      name: apt-transport-https
+      state: latest
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: apt docker.list
+    become: yes
+    become_method: sudo
+    template:
+      src: docker.j2
+      dest: /etc/apt/sources.list.d/docker.list
+      backup: yes
+      mode: 0600
+      owner: root
+      group: root
+
+  - name: apt update
+    become: yes
+    become_method: sudo
+    apt:
+      update_cache: yes
+
+  - name: docker
+    become: yes
+    become_method: sudo
+    apt:
+      name: docker-engine
+      state: latest
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: python-pip
+    become: yes
+    become_method: sudo
+    apt:
+      name: python-pip
+      state: latest
+      install_recommends: no
+
+  - name: docker-py
+    pip:
+      name: docker-py
+      state: latest
+...
