@@ -3,6 +3,7 @@
   hosts: all
   vars:
     repo: experimental
+    gpg_fingerprint: 58118E89F3A912897C070ADBF76221572C52609D
 
   tasks:
   - name: apt-transport-https installation
@@ -13,6 +14,14 @@
       state: latest
       update_cache: yes
       cache_valid_time: 3600
+
+  - name: docker gpg key
+    become: yes
+    become_method: sudo
+    apt_key:
+      keyserver: hkp://pool.sks-keyservers.net:80
+      id: "{{ gpg_fingerprint }}"
+      state: present
 
   - name: apt docker.list
     become: yes
