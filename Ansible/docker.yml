@@ -53,10 +53,12 @@
     tags: docker
 
   - name: docker running and enabled
+    become: yes
+    become_method: sudo
     service:
-    name: docker
-    state: running
-    enabled: yes
+      name: docker
+      state: running
+      enabled: yes
     tags: docker
 
   - name: python-pip
