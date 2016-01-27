@@ -22,6 +22,7 @@
       keyserver: hkp://pool.sks-keyservers.net:80
       id: "{{ gpg_fingerprint }}"
       state: present
+    tags: docker
 
   - name: apt docker.list
     become: yes
@@ -33,6 +34,7 @@
       mode: 0600
       owner: root
       group: root
+    tags: docker
 
   - name: apt update
     become: yes
@@ -48,6 +50,14 @@
       state: latest
       update_cache: yes
       cache_valid_time: 3600
+    tags: docker
+
+  - name: docker running and enabled
+    service:
+    name: docker
+    state: running
+    enabled: yes
+    tags: docker
 
   - name: python-pip
     become: yes
@@ -61,4 +71,5 @@
     pip:
       name: docker-py
       state: latest
+    tags: docker
 ...
