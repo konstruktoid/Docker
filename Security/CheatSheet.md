@@ -160,22 +160,24 @@ For reference:
 
 ## Dockerfile example
 ```sh
-FROM alpine:3.2  [1]
+FROM alpine:3.3   [1]
 
-ENV VERSION 1.9.1
+ENV VERSION 1.10.0
+ENV SHA256 a66b20423b7d849aa8ef448b98b41d18c45a30bf3fe952cc2ba4760600b18087
 
 WORKDIR /usr/bin
 
 RUN apk update && \
-    apk upgrade && \  [2]
+    apk upgrade && \    [2]
     apk --update add coreutils curl && \
     curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION > docker-$VERSION && \
     curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.sha256 > docker-$VERSION.sha256 && \
-    sha256sum -c docker-$VERSION.sha256 && \  [3]
+    sha256sum -c docker-$VERSION.sha256 && \    [3]
+    echo "$SHA256 docker-$VERSION" | sha256sum -c - && \    [3]
     ln -s docker-$VERSION docker && \
     chmod u+x docker-$VERSION && \
     apk del curl && \
-    rm -rf /var/cache/apk/*  [4]
+    rm -rf /var/cache/apk/*   [4]
 
 COPY ./docker-garby.sh /docker-garby.sh   [5]
 
@@ -187,7 +189,7 @@ ENTRYPOINT ["/bin/sh", "/docker-garby.sh"]
 3. Verify downloaded files  
 4. Remove unused applications and unnecessary directories  
 5. COPY local files, ADD remote files  
-7. Create an unprivileged USER if possible
+6. Create an unprivileged USER if possible
 
 ### Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`  
