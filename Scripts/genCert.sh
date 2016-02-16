@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR='/etc/ssl/docker'
+DIR='/etc/docker/certs.d'
 
 ID=$(id -u)
 if [ "x$ID" != "x0" ]; then
