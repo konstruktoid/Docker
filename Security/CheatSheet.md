@@ -158,7 +158,7 @@ For reference:
 `--read-only` Mount container root filesystem as read only.  
 `-v /volume:ro` Mount volumes read only if possible.  
 
-## Dockerfile example
+## Dockerfile example - Container
 ```sh
 FROM alpine:3.3   [1]
 
@@ -190,6 +190,20 @@ ENTRYPOINT ["/bin/sh", "/docker-garby.sh"]
 4. Remove unused applications and unnecessary directories  
 5. COPY local files, ADD remote files  
 6. Create an unprivileged USER if possible
+
+## Dockerfile example - Image
+```sh
+FROM scratch    [1]
+ADD ./wheezy-1603172157.txz /   [2]
+ENV SHA 00c3cc1b8968d3b5acf2ac9fc1e36f2aa30dfd4ff44a35d8d3bd1948914d722d    [3]
+
+ONBUILD RUN apt-get update && apt-get -y upgrade    [4]
+```
+
+1. Use `scratch`  
+2. Add a compressed, minimal, base  
+3. Hash for the above base  
+4. Force containers based on this image to keep up-to-date  
 
 ### Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`  
