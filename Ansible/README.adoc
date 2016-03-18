@@ -1,0 +1,1 @@
+Docker playbooks are available in the https://github.com/konstruktoid/Ansible[Ansible] repo.
