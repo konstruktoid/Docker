@@ -1,10 +1,11 @@
-# Create a simple Docker host on DigitalOcean
+= Create a simple Docker host on DigitalOcean
 
-`$ sh createMachine.sh install` installs `docker-machine`.  
-`$ sh createMachine.sh machinename accesstoken location` installs and configures a basic Ubuntu host with Docker, using [https://github.com/konstruktoid/Docker/blob/master/Security/baselineDockerHost.sh](https://github.com/konstruktoid/Docker/blob/master/Security/baselineDockerHost.sh).
+`$ sh createMachine.sh install` installs `docker-machine`. +
+`$ sh createMachine.sh machinename accesstoken location` installs and configures a basic Ubuntu host with Docker, using https://github.com/konstruktoid/Docker/blob/master/Security/baselineDockerHost.sh.
 
-## Example
-```sh
+== Example
+[source]
+----
 $ sh createMachine.sh testmachine 103d1ccfda4e81d531b5f38005562f86b8b27604 tor1
 Creating CA: /home/k10d/.docker/machine/certs/ca.pem
 Creating client certificate: /home/k10d/.docker/machine/certs/cert.pem
@@ -28,4 +29,4 @@ Saving to: ‘/tmp/baselineDockerHost.sh’
 $ docker-machine ssh testmachine
 root@testmachine:~# ps aux | grep docker
 root     15789  0.0  3.9 247408 19980 ?        Ssl  12:20   0:00 /usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=digitalocean
-```
+----
