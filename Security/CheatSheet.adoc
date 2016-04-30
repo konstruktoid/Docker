@@ -13,11 +13,12 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Se
 https://benchmarks.cisecurity.org/downloads/show-single/?file=rhel7.100[CIS Red Hat Enterprise Linux 7 Benchmark v1.0.0]
 
 === General
+https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=independentlinux.100[CIS Distribution Independent Linux Benchmark v1.0.0] +
 http://stigviewer.com/stig/unix_srg/[Operating System Security Requirements Guide (UNIX Version)]
 
 == Docker security documentation
 https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/[Before you initiate a "docker pull"] +
-https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100[CIS Docker 1.6 Benchmark v1.0.0] (PDF) +
+https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.110[CIS Docker 1.11 Benchmark v1.0.0] +
 https://docs.docker.com/articles/security/[Docker Security] +
 http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf[Docker Security Cheat Sheet] (PDF) +
 https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf[Introduction to Container Security] (PDF) +
