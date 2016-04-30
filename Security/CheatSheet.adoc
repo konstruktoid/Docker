@@ -51,6 +51,7 @@ The Notary project comprises a server and a client for running and interacting w
 `--tlsverify` Enable TLS, see https://docs.docker.com/articles/https/[Protecting the Docker daemon Socket with HTTPS]. https://github.com/konstruktoid/Docker/blob/master/Scripts/genCert.sh[genCert.sh] is a script to automatically generate certificates. +
 `--userns-remap=default` Enable user namespace. +
 `--authorization-plugin` Use authorization plugin to manage access to the Docker daemon. +
+`--disable-legacy-registry` Disable legacy registry. +
 
 `/usr/bin/docker daemon -s overlay --userns-remap=default --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
 
