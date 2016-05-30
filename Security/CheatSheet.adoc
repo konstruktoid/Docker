@@ -34,12 +34,15 @@ Custom AppArmor profile generator for Docker containers, available at https://gi
 Docker Bench for Security is a script that checks for all the automatable tests included in the https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100[CIS Docker 1.6 Benchmark]. +
 Docker Bench for Security is available at https://dockerbench.com.
 
-=== drydock
-drydock provides a flexible way of assessing the security of your Docker daemon configuration and containers using editable audit templates. Available at https://github.com/zuBux/drydock.
+=== docker-covenant
+Enforcing basic security policies. Available at https://github.com/konstruktoid/docker-covenant.
 
 === dockertarsum
 Like the system sum utilites (md5sum, sha1sum, sha256sum, etc), this is a command line tool to get the fixed time checksum of docker image layers.
 dockertarsum is available at https://github.com/vbatts/docker-utils#dockertarsum.
+
+=== drydock
+drydock provides a flexible way of assessing the security of your Docker daemon configuration and containers using editable audit templates. Available at https://github.com/zuBux/drydock.
 
 === Notary
 The Notary project comprises a server and a client for running and interacting with trusted collections. See https://github.com/docker/notary.
