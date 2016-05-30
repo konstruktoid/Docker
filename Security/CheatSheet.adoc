@@ -18,6 +18,7 @@ http://stigviewer.com/stig/unix_srg/[Operating System Security Requirements Guid
 
 == Docker security documentation
 https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/[Before you initiate a "docker pull"] +
+https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.11.0_Benchmark_v1.0.0.pdf[CIS Docker 1.11 Benchmark] (PDF) +
 https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.110[CIS Docker 1.11 Benchmark v1.0.0] +
 https://docs.docker.com/articles/security/[Docker Security] +
 http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf[Docker Security Cheat Sheet] (PDF) +
@@ -31,7 +32,7 @@ http://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-dock
 Custom AppArmor profile generator for Docker containers, available at https://github.com/jfrazelle/bane.
 
 === Docker Bench for Security
-Docker Bench for Security is a script that checks for all the automatable tests included in the https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.100[CIS Docker 1.6 Benchmark]. +
+Docker Bench for Security is a script that checks for all the automatable tests included in the https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.11.0_Benchmark_v1.0.0.pdf[CIS Docker 1.11 Benchmark].
 Docker Bench for Security is available at https://dockerbench.com.
 
 === docker-covenant
