@@ -2,20 +2,19 @@
 VERSION='2'
 BASENAME='cass'
 NODES=10
-SEED=0
 
-if docker ps | grep -q "$BASENAME$SEED"; then
-  echo "Cassandra seed container $BASENAME$SEED already exists."
-else
-  docker run --name "$BASENAME$SEED" -h "$BASENAME$SEED" -d cassandra:$VERSION
-fi
-
-nloop=1
+nloop=0
 while [ $nloop -lt $NODES ]; do
   if docker ps | grep -q "cass$nloop"; then
     echo "Container cass$nloop already exists."
   else
-    docker run --name "$BASENAME$nloop" -h "$BASENAME$nloop" -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' $BASENAME$SEED)" "cassandra:$VERSION"
+    if [ $nloop -eq 0 ]; then
+      docker run --name "$BASENAME$nloop" -h "$BASENAME$nloop" -d "cassandra:$VERSION"
+      seedname="$BASENAME$nloop"
+    else
+      docker run --name "$BASENAME$nloop" -h "$BASENAME$nloop" -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' $seedname)" "cassandra:$VERSION"
+      echo "$seedname"
+    fi
   fi
   nloop=$((nloop + 1))
 done
