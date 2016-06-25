@@ -56,8 +56,9 @@ The Notary project comprises a server and a client for running and interacting w
 `--userns-remap=default` Enable user namespace. +
 `--authorization-plugin` Use authorization plugin to manage access to the Docker daemon. +
 `--disable-legacy-registry` Disable legacy registry. +
+`--live-restore` Allows the Docker daemon to exit, be upgraded, or recover from a crash without affecting running containers. +
 
-`/usr/bin/docker daemon -s overlay --userns-remap=default --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
+`/usr/bin/dockerd  --userns-remap=default --disable-legacy-registry --live-restore --icc=false -s overlay2 --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
 
 == Docker run options
 === Capabilities
