@@ -1,4 +1,4 @@
-Wed Jul 13 01:17:10 CEST 2016
+Fri Sep  2 22:18:28 CEST 2016
 4.7M	alpine_2.6.tar
 4.9M	alpine_2.7.tar
 5.2M	alpine_3.1.tar
@@ -21,7 +21,7 @@ Wed Jul 13 01:17:10 CEST 2016
 213M	fedora_23.tar
 204M	fedora_24.tar
 204M	fedora_latest.tar
-4.9M	konstruktoid_alpine_latest.tar
+6.3M	konstruktoid_alpine_latest.tar
 44M	konstruktoid_debian_7.tar
 76M	konstruktoid_debian_8.tar
 76M	konstruktoid_debian_latest.tar
@@ -37,13 +37,13 @@ Wed Jul 13 01:17:10 CEST 2016
 222M	oraclelinux_6.tar
 276M	oraclelinux_7.tar
 276M	oraclelinux_latest.tar
-197M	ubuntu_14.04.tar
+188M	ubuntu_14.04.tar
 194M	ubuntu_14.10.tar
 137M	ubuntu_15.10.tar
-125M	ubuntu_16.04.tar
-101M	ubuntu_16.10.tar
-125M	ubuntu_latest.tar
-182M	nginx_latest.tar
-70M	nginx_mainline-alpine.tar
-62M	nginx_stable-alpine.tar
-8.5M	konstruktoid_nginx_latest.tar
+127M	ubuntu_16.04.tar
+98M	ubuntu_16.10.tar
+127M	ubuntu_latest.tar
+183M	nginx_latest.tar
+54M	nginx_mainline-alpine.tar
+54M	nginx_stable-alpine.tar
+9.9M	konstruktoid_nginx_latest.tar
