@@ -56,8 +56,9 @@ The Notary project comprises a server and a client for running and interacting w
 `--userns-remap=default` Enable user namespace. +
 `--authorization-plugin` Use authorization plugin to manage access to the Docker daemon. +
 `--disable-legacy-registry` Disable legacy registry. +
+`--live-restore` Allows the Docker daemon to exit, be upgraded, or recover from a crash without affecting running containers. +
 
-`/usr/bin/docker daemon -s overlay --userns-remap=default --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
+`/usr/bin/dockerd  --userns-remap=default --disable-legacy-registry --live-restore --icc=false -s overlay2 --tlsverify --tlscacert=/etc/ssl/docker/ca.pem --tlscert=/etc/ssl/docker/server-cert.pem --tlskey=/etc/ssl/docker/server-key.pem --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=50:100 -H=0.0.0.0:2376 -H fd://`
 
 == Docker run options
 === Capabilities
@@ -152,34 +153,38 @@ For reference: +
 ----
 FROM alpine:3.3 # <1>
 
-ENV VERSION 1.10.0
-ENV SHA256 a66b20423b7d849aa8ef448b98b41d18c45a30bf3fe952cc2ba4760600b18087
+ENV VERSION 1.11.2
+ENV SHA256 8c2e0c35e3cda11706f54b2d46c2521a6e9026a7b13c7d4b8ae1f3a706fc55e1 # <2>
 
 WORKDIR /usr/bin
 
 RUN apk update && \
-    apk upgrade && \ # <2>
-    apk --update add coreutils curl && \
-    curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION > docker-$VERSION && \
-    curl -sS https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.sha256 > docker-$VERSION.sha256 && \
-    sha256sum -c docker-$VERSION.sha256 && \ # <3>
-    echo "$SHA256 docker-$VERSION" | sha256sum -c - && \ # <3>
-    ln -s docker-$VERSION docker && \
-    chmod u+x docker-$VERSION && \
-    apk del curl && \
-    rm -rf /var/cache/apk/* # <4>
+    apk upgrade && \ # <3>
+    apk --update add coreutils wget ca-certificates && \
+    wget https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.tgz && \
+    wget https://get.docker.com/builds/Linux/x86_64/docker-$VERSION.tgz.sha256 && \
+    sha256sum -c docker-$VERSION.tgz.sha256 && \ # <4>
+    echo "$SHA256 docker-$VERSION.tgz" | sha256sum -c - && \ # <4>
+    tar -xzvf docker-$VERSION.tgz -C /tmp && \
+    mv /tmp/docker/docker . && \
+    chmod u+x docker* && \
+    rm -rf /tmp/docker* && \ # <5>
+    apk del wget ca-certificates && \ # <5>
+    rm -rf /var/cache/apk/* docker-$VERSION.tgz docker-$VERSION.tgz.sha256 # <5>
 
-COPY ./docker-garby.sh /docker-garby.sh # <5>
+COPY ./docker-garby.sh /docker-garby.sh # <6>
 
 ENTRYPOINT ["/bin/sh", "/docker-garby.sh"]
 ----
 
 <1> Do we trust the remote repository? Is there any reason we're not using a homebuilt base image?
-<2> Keep the container up-to-date
-<3> Verify downloaded files
-<4> Remove unused applications and unnecessary directories
-<5> COPY local files, ADD remote files
-<6> Create an unprivileged USER if possibe
+<2> Hash to verify downloaded file
+<3> Keep the container up-to-date
+<4> Verify downloaded files
+<5> Remove unused applications and unnecessary directories
+<6> COPY local files, ADD remote files
+<7> Create an unprivileged USER if possibe
+<8> GnuPG sign the commit, `git -s -S -m '...'`
 
 == Dockerfile example - Image
 [source]
@@ -195,6 +200,7 @@ ONBUILD RUN apt-get update && apt-get -y upgrade # <4>
 <2> Add a compressed, minimal, base
 <3> Hash for the above base
 <4> Force containers based on this image to keep up-to-date
+<5> GnuPG sign the commit, `git -s -S -m '...'` 
 
 === Docker run example
 `~$ export CAP="--cap-drop all --cap-add net_admin"`

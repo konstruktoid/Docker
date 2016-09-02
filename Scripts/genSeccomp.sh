@@ -8,7 +8,7 @@
 date="$(date -u +%y%m%d%H%M)"
 
 if [ -z "$1" ]; then
-  echo "Arument missing, which should be file with a syscall per line."
+  echo "Argument missing, which should be file with a syscall per line."
   exit 1
 else
   FILE="$1"

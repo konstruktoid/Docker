@@ -5,6 +5,7 @@ IMAGES="
   alpine:2.7
   alpine:3.1
   alpine:3.2
+  alpine:3.3
   alpine:latest
   busybox:latest
   centos:5
@@ -19,16 +20,19 @@ IMAGES="
   fedora:20
   fedora:21
   fedora:22
+  fedora:23
+  fedora:24
   fedora:latest
   konstruktoid/alpine:latest
-  konstruktoid/debian:jessie
+  konstruktoid/debian:7
+  konstruktoid/debian:8
   konstruktoid/debian:latest
-  konstruktoid/debian:wheezy
   konstruktoid/ubuntu:latest
-  konstruktoid/ubuntu:trusty
-  konstruktoid/ubuntu:wily
-  konstruktoid/ubuntu:xenial
-  konstruktoid/ubuntu:yakkety
+  konstruktoid/ubuntu:14.04
+  konstruktoid/ubuntu:14.10
+  konstruktoid/ubuntu:15.10
+  konstruktoid/ubuntu:16.04
+  konstruktoid/ubuntu:16.10
   opensuse:13.1
   opensuse:13.2
   opensuse:latest
@@ -42,6 +46,10 @@ IMAGES="
   ubuntu:16.04
   ubuntu:16.10
   ubuntu:latest
+  nginx:latest
+  nginx:mainline-alpine
+  nginx:stable-alpine
+  konstruktoid/nginx:latest
 "
 
 date > docker_images_result
