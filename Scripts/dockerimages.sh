@@ -35,25 +35,23 @@ IMAGES="
   oraclelinux:6
   oraclelinux:7
   oraclelinux:latest
-  ubuntu:14.04
-  ubuntu:14.10
-  ubuntu:15.10
+  ubuntu:14.04.5
   ubuntu:16.04
   ubuntu:16.10
   ubuntu:latest
-  nginx:latest
-  nginx:mainline-alpine
-  nginx:stable-alpine
-  konstruktoid/nginx:latest
 "
 
 date > docker_images_result
+IMGTMP="$(mktemp)"
 
 for base in $IMAGES;
   do
     image=$(echo "$base" | sed -e 's/\//_/g' -e 's/:/_/g')
     docker pull "$base"
     docker save -o "$image.tar" "$base"
-    du -h "$image.tar" >> docker_images_result
+    du -h "$image.tar" >> "$IMGTMP"
     rm "$image.tar"
   done
+
+sort -k1 -n "$IMGTMP" >> docker_images_result
+rm "$IMGTMP"
