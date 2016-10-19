@@ -1,25 +1,18 @@
 #!/bin/sh
 
 IMAGES="
-  alpine:2.6
-  alpine:2.7
-  alpine:3.1
-  alpine:3.2
   alpine:3.3
+  alpine:3.4
+  alpine:edge
   alpine:latest
   busybox:latest
-  centos:5
   centos:6
-  centos:6.6
+  centos:6.8
   centos:7
   centos:latest
-  debian:6
   debian:7
   debian:8
   debian:latest
-  fedora:20
-  fedora:21
-  fedora:22
   fedora:23
   fedora:24
   fedora:latest
@@ -27,12 +20,14 @@ IMAGES="
   konstruktoid/debian:7
   konstruktoid/debian:8
   konstruktoid/debian:latest
-  konstruktoid/ubuntu:latest
+  konstruktoid/nginx:latest
   konstruktoid/ubuntu:14.04
-  konstruktoid/ubuntu:14.10
-  konstruktoid/ubuntu:15.10
   konstruktoid/ubuntu:16.04
   konstruktoid/ubuntu:16.10
+  konstruktoid/ubuntu:latest
+  nginx:latest
+  nginx:mainline-alpine
+  nginx:stable-alpine
   opensuse:13.1
   opensuse:13.2
   opensuse:latest
