@@ -15,6 +15,7 @@ IMAGES="
   debian:latest
   fedora:23
   fedora:24
+  fedora:25
   fedora:latest
   konstruktoid/alpine:latest
   konstruktoid/debian:7
@@ -28,8 +29,8 @@ IMAGES="
   nginx:latest
   nginx:mainline-alpine
   nginx:stable-alpine
-  opensuse:13.1
   opensuse:13.2
+  opensuse:42.2
   opensuse:latest
   oraclelinux:5
   oraclelinux:6
