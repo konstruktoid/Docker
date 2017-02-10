@@ -1,4 +1,4 @@
-= Docker Security Cheat Sheet
+= Docker Engine Security Cheat Sheet
 
 == Docker daemon host documentation
 Lock down with a firewall, remove SUID/GUID, password policies, stricter SSH configuration, and so on. +
@@ -18,8 +18,7 @@ http://stigviewer.com/stig/unix_srg/[Operating System Security Requirements Guid
 
 == Docker security documentation
 https://securityblog.redhat.com/2014/12/18/before-you-initiate-a-docker-pull/[Before you initiate a "docker pull"] +
-https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.11.0_Benchmark_v1.0.0.pdf[CIS Docker 1.11 Benchmark] (PDF) +
-https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.110[CIS Docker 1.11 Benchmark v1.0.0] +
+https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.13.0_Benchmark_v1.0.0.pdf[CIS Docker 1.13 Benchmark] (PDF) +
 https://docs.docker.com/articles/security/[Docker Security] +
 http://container-solutions.com/content/uploads/2015/06/15.06.15_DockerCheatSheet_A2.pdf[Docker Security Cheat Sheet] (PDF) +
 https://d3oypxn00j2a10.cloudfront.net/assets/img/Docker%20Security/WP_Intro_to_container_security_03.20.2015.pdf[Introduction to Container Security] (PDF) +
@@ -32,7 +31,7 @@ http://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-dock
 Custom AppArmor profile generator for Docker containers, available at https://github.com/jfrazelle/bane.
 
 === Docker Bench for Security
-Docker Bench for Security is a script that checks for all the automatable tests included in the https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.11.0_Benchmark_v1.0.0.pdf[CIS Docker 1.11 Benchmark].
+Docker Bench for Security is a script that checks for all the automatable tests included in the https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.13.0_Benchmark_v1.0.0.pdf[CIS Docker 1.13 Benchmark].
 Docker Bench for Security is available at https://dockerbench.com.
 
 === docker-covenant
@@ -71,13 +70,13 @@ The Notary project comprises a server and a client for running and interacting w
 ~$ docker ps
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                           NAMES
 82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx
-~$ docker exec `docker ps -q` pgrep -a nginx
+~$ docker exec $(docker ps -q) pgrep -a nginx
 1 nginx: master process nginx -g daemon off;
 9 nginx: worker process
-~$ docker exec `docker ps -q` cat /proc/1/status | grep CapEff | awk '{print $NF}'
+~$ docker exec $(docker ps -q) cat /proc/1/status | grep CapEff | awk '{print $NF}'
 00000000a80425fb
-~$ docker exec `docker ps -q` capsh --decode=00000000a80425fb | sed -e 's/.*=//' -e 's/cap_/--cap-add /g' -e 's/,/ /g'
---cap-add chown --cap-add dac_override --cap-add fowner --cap-add fsetid --cap-add kill --cap-add setgid --cap-add setuid --cap-add setpcap --cap-add net_bind_service --cap-add net_raw --cap-add sys_chroot --cap-add mknod --cap-add audit_write --cap-add setfcap
+~$ capsh --decode=00000000a80425fb | echo "--cap-drop=all --cap-add={$(sed -e 's/.*=//' -e 's/cap_//g')}"
+--cap-drop=all --cap-add={chown,dac_override,fowner,fsetid,kill,setgid,setuid,setpcap,net_bind_service,net_raw,sys_chroot,mknod,audit_write,setfcap}
 ----
 
 ==== Using getpcaps
@@ -86,11 +85,11 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 ~$ docker ps
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                           NAMES
 82ae0cd169d3        nginx:latest        "nginx -g 'daemon of   About an hour ago   Up About an hour    443/tcp, 0.0.0.0:8080->80/tcp   nginx
-~$ docker exec `docker ps -q` pgrep -a nginx
+~$ docker exec $(docker ps -q) pgrep -a nginx
 1 nginx: master process nginx -g daemon off;
 9 nginx: worker process
-~$ export getTMP=`mktemp XXXXXX` && docker exec `docker ps -q` /sbin/getpcaps 1 2> $getTMP && cat $getTMP | sed -e 's/.*=//' -e 's/cap_/--cap-add /g' -e 's/,/ /g'
---cap-add chown --cap-add dac_override --cap-add fowner --cap-add fsetid --cap-add kill --cap-add setgid --cap-add setuid --cap-add setpcap --cap-add net_bind_service --cap-add net_raw --cap-add sys_chroot --cap-add mknod --cap-add audit_write --cap-add setfcap+eip
+~$ export getTMP=$(mktemp XXXXXX) && docker exec $(docker ps -q) /sbin/getpcaps 1 2> $getTMP && sudo echo "--cap-drop=all --cap-add={$(sed -e 's/.*= //' -e 's/cap_//g' -e 's/+eip//g' $getTMP)}"
+--cap-drop=all --cap-add={chown,dac_override,fowner,fsetid,kill,setgid,setuid,setpcap,net_bind_service,net_raw,sys_chroot,mknod,audit_write,setfcap}
 ----
 
 For reference: +
@@ -259,6 +258,10 @@ drwx------ 2 polipo polipo  200 Jan 16 21:08 z.cdn.turner.com
 ----
 
 == Garbage collection
+
+=== docker prune
+https://docs.docker.com/engine/reference/commandline/system_prune/[docker prune]
+
 === docker-gc
 https://github.com/spotify/docker-gc[spotify/docker-gc]
 
