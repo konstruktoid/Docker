@@ -2,6 +2,11 @@
 
 DIR='/etc/docker/certs.d'
 
+if ! ls -l /proc/$$/exe | grep bash 2>/dev/null 1>&2; then
+  echo "Bash required."
+  exit 1
+fi
+
 ID=$(id -u)
 if [ "x$ID" != "x0" ]; then
   echo "root privileges required."
@@ -33,7 +38,7 @@ openssl genrsa -out "$SERVERKEY" 4096
 openssl req -new -subj "/CN=$FQDN" -key "$SERVERKEY" -out "$SERVERCSR"
 
 iparr=()
-for i in $(ifconfig  | grep 'inet addr:'| cut -d: -f2 | awk '{ print $1}'); do
+for i in $(ip route get 213.73.91.35 | awk {'print $7'} | tr -d '\n'); do
   iparr+=("$i")
 done
 
@@ -57,6 +62,13 @@ chmod 0444 $DIR/*.pem
 chmod 0400 $DIR/server*key.pem $DIR/ca*key.pem
 
 SETTINGS="
+DAEMON.JSON:
+\"tls\": true,
+\"tlscacert\": \"$CACRT\",
+\"tlscert\": \"$SERVERCRT\",
+\"tlskey\": \"$SERVERKEY\",
+\"tlsverify\": true
+
 DOCKER DAEMON SETTINGS:
 docker daemon --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERVERKEY -H=0.0.0.0:2376
 
