@@ -38,7 +38,7 @@ openssl genrsa -out "$SERVERKEY" 4096
 openssl req -new -subj "/CN=$FQDN" -key "$SERVERKEY" -out "$SERVERCSR"
 
 iparr=()
-for i in $(ip route get 213.73.91.35 | awk {'print $7'} | tr -d '\n'); do
+for i in $(/sbin/ifconfig | grep -E 'inet\s' | awk '{print $2}'); do
   iparr+=("$i")
 done
 
