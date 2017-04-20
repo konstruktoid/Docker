@@ -3,6 +3,7 @@
 IMAGES="
   alpine:3.3
   alpine:3.4
+  alpine:3.5
   alpine:edge
   alpine:latest
   busybox:latest
