@@ -4,6 +4,7 @@ IMAGES="
   alpine:3.3
   alpine:3.4
   alpine:3.5
+  alpine:3.6
   alpine:edge
   alpine:latest
   busybox:latest
@@ -44,7 +45,7 @@ IMAGES="
   ubuntu:latest
 "
 
-date > docker_images_result
+LANG=C date -u > docker_images_result
 IMGTMP="$(mktemp)"
 
 for base in $IMAGES;
