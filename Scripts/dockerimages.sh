@@ -13,6 +13,7 @@ IMAGES="
   centos:latest
   debian:7
   debian:8
+  debian:9
   debian:latest
   fedora:23
   fedora:24
