@@ -10,14 +10,15 @@ fi
 
 randShuf=$(shuf -i 1-5 -n 1)
 shufContainer=$(docker ps -q | shuf -n 1 | awk '{print $1}')
-shufContainerCmd="$(docker help | awk '{print $1}' | egrep 'pause|restart|stop' |\
+shufContainerCmd="$(docker help | awk '{print $1}' | grep -E 'kill|restart|stop' |\
   shuf -n 1)"
 containerImage=$(docker inspect -f '{{.Config.Image}}' "$shufContainer")
 containerName=$(docker inspect -f '{{.Name}}' "$shufContainer")
 
 containerCMD() {
   containerInfo="$shufContainer ($containerName): $containerImage"
-  echo "executing $shufContainerCmd on container $containerInfo"
+  khaosMsg="Executing $shufContainerCmd on container $containerInfo"
+  logger -i -t "khaosdo" -p "user.info" "$khaosMsg"
   docker "$shufContainerCmd" "$shufContainer"
 }
 
@@ -28,6 +29,6 @@ serverCMD() {
 
 if [ "$randShuf" -le 3 ]; then
   containerCMD
-  else
+else
   serverCMD
 fi
