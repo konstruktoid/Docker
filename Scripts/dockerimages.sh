@@ -23,11 +23,13 @@ IMAGES="
   konstruktoid/alpine:latest
   konstruktoid/debian:7
   konstruktoid/debian:8
+  konstruktoid/debian:9
   konstruktoid/debian:latest
   konstruktoid/nginx:latest
   konstruktoid/ubuntu:14.04
   konstruktoid/ubuntu:16.04
   konstruktoid/ubuntu:16.10
+  konstruktoid/ubuntu:17.04
   konstruktoid/ubuntu:latest
   nginx:latest
   nginx:mainline-alpine
@@ -42,6 +44,7 @@ IMAGES="
   ubuntu:14.04.5
   ubuntu:16.04
   ubuntu:16.10
+  ubuntu:17.04
   ubuntu:latest
 "
 
