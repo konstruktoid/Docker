@@ -1,13 +1,13 @@
-Wed Sep 20 09:33:38 UTC 2017
+Fri Oct 27 18:59:58 UTC 2017
 1,3M	busybox_latest.tar
 4,1M	alpine_3.5.tar
 4,1M	alpine_3.6.tar
-4,1M	alpine_edge.tar
 4,1M	alpine_latest.tar
+4,1M	konstruktoid_alpine_latest.tar
+4,3M	alpine_edge.tar
 4,9M	alpine_3.3.tar
 4,9M	alpine_3.4.tar
-7,5M	konstruktoid_alpine_latest.tar
-12M	konstruktoid_nginx_latest.tar
+8,2M	konstruktoid_nginx_latest.tar
 16M	nginx_mainline-alpine.tar
 16M	nginx_stable-alpine.tar
 44M	konstruktoid_debian_7.tar
@@ -19,15 +19,16 @@ Wed Sep 20 09:33:38 UTC 2017
 82M	konstruktoid_ubuntu_16.04.tar
 82M	konstruktoid_ubuntu_latest.tar
 87M	debian_7.tar
+93M	ubuntu_17.10.tar
 94M	ubuntu_17.04.tar
 95M	opensuse_13.2.tar
 101M	debian_9.tar
 101M	debian_latest.tar
+106M	opensuse_latest.tar
 107M	nginx_latest.tar
-107M	opensuse_latest.tar
 107M	ubuntu_16.10.tar
-120M	ubuntu_16.04.tar
-120M	ubuntu_latest.tar
+121M	ubuntu_16.04.tar
+121M	ubuntu_latest.tar
 124M	debian_8.tar
 129M	opensuse_42.2.tar
 172M	oraclelinux_6.tar

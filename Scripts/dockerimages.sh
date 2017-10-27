@@ -45,6 +45,7 @@ IMAGES="
   ubuntu:16.04
   ubuntu:16.10
   ubuntu:17.04
+  ubuntu:17.10
   ubuntu:latest
 "
 
@@ -62,3 +63,5 @@ for base in $IMAGES;
 
 sort -k1 -n "$IMGTMP" >> docker_images_result
 rm "$IMGTMP"
+
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock konstruktoid/docker-garby
