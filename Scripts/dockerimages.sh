@@ -30,6 +30,7 @@ IMAGES="
   konstruktoid/ubuntu:16.04
   konstruktoid/ubuntu:16.10
   konstruktoid/ubuntu:17.04
+  konstruktoid/ubuntu:18.04
   konstruktoid/ubuntu:latest
   nginx:latest
   nginx:mainline-alpine
