@@ -37,6 +37,11 @@ containerOpts="
 5_31;FAIL;-v /var/run/docker.sock;alpine;sleep 1000
 "
 
+if ! docker info 2>/dev/null 1>&2; then
+  echo "The docker daemon doesn't seem to be running"
+  exit 1
+fi
+
 for i in $pullImages; do
   docker pull "$i"
 done
