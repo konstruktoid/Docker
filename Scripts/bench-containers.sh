@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script spawns alot of containers in order to test 
+# This script spawns alot of containers in order to test
 # docker-bench-security (https://github.com/docker/docker-bench-security)
 #
 # GC: https://github.com/konstruktoid/docker-garby
@@ -60,3 +60,5 @@ do
     docker run -d --name "test_$testresult"_"$testnum" $copts $cimage $ccommand
   fi
 done <<< "$containerOpts"
+
+docker run --rm --read-only --tmpfs /tmp:rw,nosuid,nodev -v /var/run/docker.sock:/var/run/docker.sock konstruktoid/docker-garby
