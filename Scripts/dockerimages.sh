@@ -65,4 +65,4 @@ for base in $IMAGES;
 sort -k1 -n "$IMGTMP" >> docker_images_result
 rm "$IMGTMP"
 
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock konstruktoid/docker-garby
+docker run --rm --read-only --tmpfs /tmp:rw,nosuid,nodev -v /var/run/docker.sock:/var/run/docker.sock konstruktoid/docker-garby
