@@ -7,9 +7,9 @@ ACCESSTOKEN="$2"
 LOCATION="$3"
 
 MACHINE="/usr/local/bin/docker-machine"
-MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.5.6/docker-machine_linux-amd64"
+MACHINERELEASE="https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-Linux-x86_64"
 HARDENING="https://raw.githubusercontent.com/konstruktoid/Docker/master/Security/baselineDockerHost.sh"
-SHA256SUM="ebaf9fc4bdc19e8523905490af422ab4db5dea7bd399c917c7e00851a65d3df5"
+SHA256SUM="a4c69bffb78d3cfe103b89dae61c3ea11cc2d1a91c4ff86e630c9ae88244db02"
 
 if ! test -d "$TMP"; then
   TMP=/tmp
