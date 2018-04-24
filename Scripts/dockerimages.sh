@@ -5,6 +5,7 @@ IMAGES="
   alpine:3.4
   alpine:3.5
   alpine:3.6
+  alpine:3.7
   alpine:edge
   alpine:latest
   busybox:latest
@@ -19,6 +20,8 @@ IMAGES="
   fedora:23
   fedora:24
   fedora:25
+  fedora:26
+  fedora:27
   fedora:latest
   konstruktoid/alpine:latest
   konstruktoid/debian:7
@@ -47,6 +50,7 @@ IMAGES="
   ubuntu:16.10
   ubuntu:17.04
   ubuntu:17.10
+  ubuntu:18:04
   ubuntu:latest
 "
 
