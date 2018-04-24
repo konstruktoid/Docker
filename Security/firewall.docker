@@ -22,11 +22,10 @@ $IPT -A OUTPUT -m conntrack --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
 $IPT -A INPUT -i lo -j ACCEPT
 $IPT -A OUTPUT -o lo -j ACCEPT
 
-for ip in $ADMIN;
-        do
-        $IPT -A INPUT -p tcp --dport 22 -s $ip -j ACCEPT
-	$IPT -A INPUT -p tcp --dport 2375 -s $ip -j ACCEPT
-	$IPT -A INPUT -p tcp --dport 2376 -s $ip -j ACCEPT
+for ip in $ADMIN; do
+  $IPT -A INPUT -p tcp --dport 22 -s $ip -j ACCEPT
+  $IPT -A INPUT -p tcp --dport 2375 -s $ip -j ACCEPT
+  $IPT -A INPUT -p tcp --dport 2376 -s $ip -j ACCEPT
 done
 
 $IPT -A FORWARD -o docker0 -j DOCKER
