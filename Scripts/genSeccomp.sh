@@ -26,7 +26,7 @@ echo "
 }
 
 calls(){
-while read call
+while read -r call
 do
   echo "
         {
