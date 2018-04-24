@@ -1,5 +1,5 @@
-= Docker playground
+= Docker/Moby playground
 
-By using the https://github.com/docker/docker/releases[latest release of Docker], you probably don't need anything here older than a month.
+By using the https://github.com/moby/moby/releases[latest release of Docker or Moby], you probably don't need anything here older than a month.
 
-image::https://raw.githubusercontent.com/docker/docker/master/docs/static_files/docker-logo-compressed.png[Docker logo]
+image::https://raw.githubusercontent.com/moby/moby/master/docs/static_files/moby-project-logo.png[Moby logo]
