@@ -13,5 +13,5 @@ git clone https://github.com/konstruktoid/hardening.git
 cd hardening || exit 1
 
 sed -i "s/FW_ADMIN='/FW_ADMIN='$ADMINIP /" ./ubuntu.cfg
-sed -i "s/SSH_GRPS='/SSH_GRPS='$(id -nG) /" ./ubuntu.cfg
+sed -i "s/SSH_GRPS='/SSH_GRPS='$(id "$(w -ih | awk '{print $1}' | head -n1)" -ng) /" ./ubuntu.cf
 sed -i "s/CHANGEME=''/CHANGEME='$(date +%s)'/" ./ubuntu.cfg
