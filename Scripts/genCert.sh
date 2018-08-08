@@ -70,7 +70,7 @@ DAEMON.JSON:
 \"tlsverify\": true
 
 DOCKER DAEMON SETTINGS:
-docker daemon --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERVERKEY -H=0.0.0.0:2376
+dockerd --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERVERKEY -H=0.0.0.0:2376
 
 DOCKER CLIENT SETTINGS:
 docker --tlsverify --tlscacert=$CACRT --tlscert=$CLIENTCRT --tlskey=$CLIENTKEY -H=$FQDN:2376 version
