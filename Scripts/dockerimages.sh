@@ -22,6 +22,7 @@ IMAGES="
   fedora:25
   fedora:26
   fedora:27
+  fedora:28
   fedora:latest
   konstruktoid/alpine:latest
   konstruktoid/debian:7
@@ -50,7 +51,7 @@ IMAGES="
   ubuntu:16.10
   ubuntu:17.04
   ubuntu:17.10
-  ubuntu:18:04
+  ubuntu:18.04
   ubuntu:latest
 "
 
