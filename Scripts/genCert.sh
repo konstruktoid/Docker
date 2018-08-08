@@ -2,7 +2,7 @@
 
 DIR='/etc/docker/certs.d'
 
-if ! ls -l /proc/$$/exe | grep bash 2>/dev/null 1>&2; then
+if ! ps -p $$ | grep -si bash; then
   echo "Bash required."
   exit 1
 fi
@@ -74,6 +74,10 @@ docker daemon --tlsverify --tlscacert=$CACRT --tlscert=$SERVERCRT --tlskey=$SERV
 
 DOCKER CLIENT SETTINGS:
 docker --tlsverify --tlscacert=$CACRT --tlscert=$CLIENTCRT --tlskey=$CLIENTKEY -H=$FQDN:2376 version
+
+LOCAL SIGNED CERTIFICATES:
+openssl s_client -connect $FQDN:2376 -showcerts </dev/null 2>/dev/null | openssl x509 -outform PEM | tee /usr/local/share/ca-certificates/$HOST.crt
+update-ca-certificates
 
 DOCUMENTATION:
 https://docs.docker.com/articles/https/"
