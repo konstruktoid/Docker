@@ -6,6 +6,7 @@ IMAGES="
   alpine:3.5
   alpine:3.6
   alpine:3.7
+  alpine:3.8
   alpine:edge
   alpine:latest
   busybox:latest
@@ -16,6 +17,7 @@ IMAGES="
   debian:7
   debian:8
   debian:9
+  debian:9-slim
   debian:latest
   fedora:23
   fedora:24
@@ -52,6 +54,7 @@ IMAGES="
   ubuntu:17.04
   ubuntu:17.10
   ubuntu:18.04
+  ubuntu:18.10
   ubuntu:latest
 "
 
