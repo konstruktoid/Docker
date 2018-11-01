@@ -25,6 +25,7 @@ IMAGES="
   fedora:26
   fedora:27
   fedora:28
+  fedora:29
   fedora:latest
   konstruktoid/alpine:latest
   konstruktoid/debian:7
@@ -37,6 +38,7 @@ IMAGES="
   konstruktoid/ubuntu:16.10
   konstruktoid/ubuntu:17.04
   konstruktoid/ubuntu:18.04
+  konstruktoid/ubuntu:18.10
   konstruktoid/ubuntu:latest
   nginx:latest
   nginx:mainline-alpine
@@ -61,14 +63,14 @@ IMAGES="
 LANG=C date -u > docker_images_result
 IMGTMP="$(mktemp)"
 
-for base in $IMAGES;
-  do
-    image=$(echo "$base" | sed -e 's/\//_/g' -e 's/:/_/g')
-    docker pull "$base"
-    docker save -o "$image.tar" "$base"
-    du -h "$image.tar" >> "$IMGTMP"
-    rm "$image.tar"
-  done
+for base in $IMAGES; do
+  image=$(echo "$base" | sed -e 's/\//_/g' -e 's/:/_/g')
+  docker pull "$base"
+  docker save -o "$image.tar" "$base"
+  du -h "$image.tar" >> "$IMGTMP"
+  rm "$image.tar"
+  docker rmi "$base"
+done
 
 sort -k1 -n "$IMGTMP" >> docker_images_result
 rm "$IMGTMP"
