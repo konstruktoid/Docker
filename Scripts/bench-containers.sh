@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # This script spawns alot of containers in order to test
 # docker-bench-security (https://github.com/docker/docker-bench-security)
@@ -46,8 +46,7 @@ for i in $pullImages; do
   docker pull "$i"
 done
 
-while IFS= read -r line
-do
+echo "$containerOpts" | while read -r line; do
   testnum="$(echo "$line" | cut -f1 -d\;)"
   testresult="$(echo "$line" | cut -f2 -d\;)"
   copts="$(echo "$line" | cut -f3 -d\;)"
@@ -59,6 +58,6 @@ do
     echo "test_$testresult"_"$testnum"
     docker run -d --name "test_$testresult"_"$testnum" $copts $cimage $ccommand
   fi
-done <<< "$containerOpts"
+done
 
 docker run --rm --read-only --tmpfs /tmp:rw,nosuid,nodev -v /var/run/docker.sock:/var/run/docker.sock konstruktoid/docker-garby
