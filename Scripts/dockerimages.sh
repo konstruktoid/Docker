@@ -39,6 +39,7 @@ IMAGES="
   konstruktoid/ubuntu:17.04
   konstruktoid/ubuntu:18.04
   konstruktoid/ubuntu:18.10
+  konstruktoid/ubuntu:19.04
   konstruktoid/ubuntu:latest
   nginx:latest
   nginx:mainline-alpine
@@ -57,6 +58,7 @@ IMAGES="
   ubuntu:17.10
   ubuntu:18.04
   ubuntu:18.10
+  ubuntu:19.04
   ubuntu:latest
 "
 
