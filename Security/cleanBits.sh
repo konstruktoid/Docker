@@ -9,7 +9,7 @@ do
     oct=$(stat -c "%a" $p |sed 's/^4/0/')
     ug=$(stat -c "%U %G" $p)
 
-      if test -e "$(which dpkg-statoverride)"; then
+      if test -e "$(command -v dpkg-statoverride)"; then
         dpkg-statoverride --remove "$p" 2> /dev/null
         dpkg-statoverride --add "$ug" "$oct" "$p" 2> /dev/null
       fi
@@ -17,3 +17,7 @@ do
     chmod -s $p
   fi
 done
+
+if getcap "$(command -v ping)" | grep -q 'cap_net_raw+ep'; then
+  setcap cap_net_raw-ep "$(command -v ping)"
+fi
