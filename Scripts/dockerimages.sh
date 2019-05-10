@@ -1,12 +1,10 @@
 #!/bin/sh
 
 IMAGES="
-  alpine:3.3
-  alpine:3.4
-  alpine:3.5
   alpine:3.6
   alpine:3.7
   alpine:3.8
+  alpine:3.9
   alpine:edge
   alpine:latest
   busybox:latest
@@ -19,9 +17,6 @@ IMAGES="
   debian:9
   debian:9-slim
   debian:latest
-  fedora:23
-  fedora:24
-  fedora:25
   fedora:26
   fedora:27
   fedora:28
@@ -44,9 +39,9 @@ IMAGES="
   nginx:latest
   nginx:mainline-alpine
   nginx:stable-alpine
-  opensuse:13.2
-  opensuse:42.2
+  opensuse:42.3
   opensuse:latest
+  opensuse:leap
   oraclelinux:5
   oraclelinux:6
   oraclelinux:7
