@@ -26,6 +26,7 @@ IMAGES="
   konstruktoid/debian:7
   konstruktoid/debian:8
   konstruktoid/debian:9
+  konstruktoid/debian:buster
   konstruktoid/debian:latest
   konstruktoid/nginx:latest
   konstruktoid/ubuntu:14.04
@@ -42,6 +43,7 @@ IMAGES="
   opensuse:42.3
   opensuse:latest
   opensuse:leap
+  opensuse:tumbleweed
   oraclelinux:5
   oraclelinux:6
   oraclelinux:7
