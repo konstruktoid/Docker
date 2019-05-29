@@ -1,4 +1,4 @@
-Sat May 11 13:50:15 UTC 2019
+Wed May 29 11:30:47 UTC 2019
 1.4M	busybox_latest.tar
 4.1M	alpine_3.6.tar
 4.3M	alpine_3.7.tar
@@ -10,16 +10,20 @@ Sat May 11 13:50:15 UTC 2019
 10M	konstruktoid_nginx_latest.tar
 17M	nginx_mainline-alpine.tar
 23M	nginx_stable-alpine.tar
-57M	debian_9-slim.tar
-60M	konstruktoid_ubuntu_16.10.tar
-81M	konstruktoid_ubuntu_18.04.tar
+56M	debian_9-slim.tar
+61M	konstruktoid_ubuntu_16.10.tar
+81M	konstruktoid_ubuntu_18.10.tar
+81M	konstruktoid_ubuntu_19.04.tar
 81M	konstruktoid_ubuntu_latest.tar
+81M	ubuntu_18.04.tar
 81M	ubuntu_18.10.tar
 81M	ubuntu_19.04.tar
+81M	ubuntu_latest.tar
+83M	konstruktoid_ubuntu_18.04.tar
 97M	debian_7.tar
+97M	konstruktoid_debian_9.tar
+97M	konstruktoid_debian_latest.tar
 97M	konstruktoid_ubuntu_14.04.tar
-97M	konstruktoid_ubuntu_18.10.tar
-97M	konstruktoid_ubuntu_19.04.tar
 97M	ubuntu_17.04.tar
 113M	debian_9.tar
 113M	debian_latest.tar
@@ -30,14 +34,10 @@ Sat May 11 13:50:15 UTC 2019
 113M	opensuse_leap.tar
 113M	ubuntu_16.10.tar
 113M	ubuntu_17.10.tar
-113M	ubuntu_18.04.tar
-113M	ubuntu_latest.tar
 129M	ubuntu_16.04.tar
 145M	debian_8.tar
 145M	konstruktoid_debian_7.tar
 177M	konstruktoid_debian_8.tar
-177M	konstruktoid_debian_9.tar
-177M	konstruktoid_debian_latest.tar
 177M	oraclelinux_6.tar
 193M	centos_6.tar
 193M	ubuntu_14.04.5.tar
