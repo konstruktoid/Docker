@@ -5,22 +5,28 @@ IMAGES="
   alpine:3.7
   alpine:3.8
   alpine:3.9
+  alpine:3.10
   alpine:edge
   alpine:latest
+  busybox:1.31
   busybox:latest
   centos:6
-  centos:6.8
   centos:7
+  centos:8
   centos:latest
   debian:7
   debian:8
+  debian:8-slim
   debian:9
   debian:9-slim
+  debian:10
+  debian:10-slim
   debian:latest
   fedora:26
   fedora:27
   fedora:28
   fedora:29
+  fedora:30
   fedora:latest
   konstruktoid/alpine:latest
   konstruktoid/debian:7
@@ -40,13 +46,13 @@ IMAGES="
   nginx:latest
   nginx:mainline-alpine
   nginx:stable-alpine
-  opensuse:42.3
   opensuse:latest
-  opensuse:leap
-  opensuse:tumbleweed
+  opensuse/leap:latest
+  opensuse/tumbleweed
   oraclelinux:5
   oraclelinux:6
   oraclelinux:7
+  oraclelinux:8
   oraclelinux:latest
   ubuntu:14.04.5
   ubuntu:16.04
@@ -56,6 +62,7 @@ IMAGES="
   ubuntu:18.04
   ubuntu:18.10
   ubuntu:19.04
+  ubuntu:20.04
   ubuntu:latest
 "
 
