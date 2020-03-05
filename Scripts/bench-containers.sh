@@ -13,6 +13,8 @@ busybox
 containerOpts="
 0_0;STANDARD;;alpine;sleep 1000
 4_1;PASS;--user nobody;alpine;sleep 1000
+5_1;PASS;--security-opt apparmor=docker-default;alpine;sleep 1000
+5_1;FAIL;--security-opt apparmor=unconfined;alpine;sleep 1000
 5_3;FAIL;--cap-add=audit_control;alpine;sleep 1000
 5_4;FAIL;--privileged;alpine;sleep 1000
 5_5;FAIL;-v /tmp:/tmp/htmp -v /etc:/tmp/etc -v /etc/ssh;alpine;sleep 1000
@@ -42,21 +44,21 @@ if ! docker info 2>/dev/null 1>&2; then
   exit 1
 fi
 
-for i in $pullImages; do
-  docker pull "$i"
+for i in ${pullImages}; do
+  docker pull "${i}"
 done
 
-echo "$containerOpts" | while read -r line; do
-  testnum="$(echo "$line" | cut -f1 -d\;)"
-  testresult="$(echo "$line" | cut -f2 -d\;)"
-  copts="$(echo "$line" | cut -f3 -d\;)"
-  cimage="$(echo "$line" | cut -f4 -d\;)"
-  ccommand="$(echo "$line" | cut -f5 -d\;)"
+echo "${containerOpts}"| while read -r line; do
+  testnum=$(echo "${line}" | cut -f1 -d\;)
+  testresult=$(echo "${line}" | cut -f2 -d\;)
+  copts=$(echo "${line}" | cut -f3 -d\;)
+  cimage=$(echo "${line}" | cut -f4 -d\;)
+  ccommand=$(echo "${line}" | cut -f5 -d\;)
 
-  if ! [ -z "$cimage" ]; then
-    docker rm -f "test_$testresult"_"$testnum" 2>/dev/null 1>&2
-    echo "test_$testresult"_"$testnum"
-    docker run -d --name "test_$testresult"_"$testnum" $copts $cimage $ccommand
+  if [ -n "${cimage}" ]; then
+    docker rm -f "test_${testresult}_${testnum}" 2>/dev/null 1>&2
+    echo "test_${testresult}_${testnum}"
+    docker run -d --name "test_${testresult}_${testnum}" ${copts} ${cimage} ${ccommand}
   fi
 done
 
