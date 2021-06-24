@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Fetch and print the size of various Docker images."""
 
 import datetime
 import ssl
@@ -26,26 +27,26 @@ distributions = [
 with open("docker_image_result", "w") as docker_image_result:
     docker_image_result.write(
         "# "
-        + str(datetime.datetime.utcnow())  # noqa: W503
-        + "\n"  # noqa: W503
-        + "# grep -v '^#' docker_image_result | sort -k1 -n\n\n"  # noqa: W503
+        + str(datetime.datetime.utcnow())
+        + "\n"
+        + "# grep -v '^#' docker_image_result | sort -k1 -n\n\n"
     )
 
-for distribution in distributions:
+for DISTRIBUTION in distributions:
     try:
-        url = (
+        URL = (
             "https://registry.hub.docker.com/v2/repositories/"
-            + distribution  # noqa: W503
-            + "/tags?page_size=1024"  # noqa: W503
+            + DISTRIBUTION
+            + "/tags?page_size=1024"
         )
 
-        if url.lower().startswith("https"):
-            req = urllib.request.urlopen(url, context=ssl.SSLContext())
+        if URL.lower().startswith("https"):
+            req = urllib.request.urlopen(URL, context=ssl.SSLContext())
         else:
-            raise ValueError("url does not start with https")
+            raise ValueError("URL does not start with https")
 
-        with req as url:
-            data = json.loads(url.read().decode())
+        with req as URL:
+            data = json.loads(URL.read().decode())
             datadict = dict()
             datadict = data
 
@@ -56,8 +57,8 @@ for distribution in distributions:
                 full_size_mb = round(((k["full_size"] / 1024) / 1024), 2)
                 last_updated = datetime.datetime.timestamp(last_updated_hub)
                 current_time = datetime.datetime.timestamp(datetime.datetime.utcnow())
-                distribution = distribution.replace("library/", "")
-                info = "%sM\t%s:%s" % (full_size_mb, distribution, k["name"])
+                DISTRIBUTION = DISTRIBUTION.replace("library/", "")
+                info = "%sM\t%s:%s" % (full_size_mb, DISTRIBUTION, k["name"])
 
                 if (last_updated - current_time) <= 2678400 and k["full_size"] > 1:
                     with open("docker_image_result", "a") as docker_image_result:
