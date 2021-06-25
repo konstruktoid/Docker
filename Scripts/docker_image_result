@@ -1,4 +1,4 @@
-# 2021-06-24 20:56:32.532913
+# 2021-06-25 18:40:47.080685
 # grep -v '^#' docker_image_result | sort -k1 -n
 
 2.68M	alpine:latest
@@ -346,7 +346,7 @@
 47.26M	konstruktoid/debian:7
 36.06M	konstruktoid/debian:10
 6.33M	konstruktoid/nginx:latest
-3.95M	konstruktoid/nginx:busybox
+2.24M	konstruktoid/nginx:busybox
 29.03M	konstruktoid/ubuntu:latest
 33.91M	konstruktoid/ubuntu:wily
 24.64M	konstruktoid/ubuntu:yakkety
