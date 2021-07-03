@@ -1,4 +1,4 @@
-# 2021-06-25 18:40:47.080685
+# 2021-07-03 23:30:19.649310
 # grep -v '^#' docker_image_result | sort -k1 -n
 
 2.68M	alpine:latest
@@ -337,24 +337,24 @@
 73.11M	fedora:23
 2.69M	konstruktoid/alpine:latest
 36.06M	konstruktoid/debian:latest
-31.15M	konstruktoid/debian:stretch
 47.26M	konstruktoid/debian:wheezy
-36.06M	konstruktoid/debian:buster
+31.15M	konstruktoid/debian:stretch
 30.21M	konstruktoid/debian:jessie
+36.06M	konstruktoid/debian:buster
 31.15M	konstruktoid/debian:9
 30.21M	konstruktoid/debian:8
 47.26M	konstruktoid/debian:7
 36.06M	konstruktoid/debian:10
-6.33M	konstruktoid/nginx:latest
-2.24M	konstruktoid/nginx:busybox
+6.85M	konstruktoid/nginx:latest
+1.84M	konstruktoid/nginx:busybox
 29.03M	konstruktoid/ubuntu:latest
-33.91M	konstruktoid/ubuntu:wily
 24.64M	konstruktoid/ubuntu:yakkety
 36.45M	konstruktoid/ubuntu:xenial
+33.91M	konstruktoid/ubuntu:wily
 26.85M	konstruktoid/ubuntu:trusty
-27.84M	konstruktoid/ubuntu:disco
 29.03M	konstruktoid/ubuntu:focal
 28.02M	konstruktoid/ubuntu:eoan
+27.84M	konstruktoid/ubuntu:disco
 27.26M	konstruktoid/ubuntu:cosmic
 27.63M	konstruktoid/ubuntu:bionic
 29.03M	konstruktoid/ubuntu:20.04
@@ -460,12 +460,12 @@
 43.18M	opensuse/leap:42
 43.18M	opensuse/leap:42.3
 34.88M	opensuse/tumbleweed:latest
+86.26M	oraclelinux:8.4
+40.23M	oraclelinux:8-slim
+86.26M	oraclelinux:8
 88.99M	oraclelinux:7.9
 46.03M	oraclelinux:7-slim
 88.99M	oraclelinux:7
-86.27M	oraclelinux:8.4
-86.27M	oraclelinux:8
-40.23M	oraclelinux:8-slim
 78.06M	oraclelinux:8.3
 66.95M	oraclelinux:6.10
 41.76M	oraclelinux:6-slim
